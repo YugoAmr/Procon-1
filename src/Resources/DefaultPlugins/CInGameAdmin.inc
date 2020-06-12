@@ -128,7 +128,7 @@ namespace PRoConEvents {
 		}
 
 		public string GetPluginVersion() {
-			return "3.3.1.0";
+			return "3.3.1.1";
 		}
 
 		public string GetPluginAuthor() {
@@ -1611,7 +1611,7 @@ namespace PRoConEvents {
 					else { // issue temp ban
 						this.ExecuteCommand("procon.protected.events.write", "Plugins", "PluginAction", String.Format("Attempting to temporarily ban {0} for {1} seconds{0}", capCommand.MatchedArguments[0].Argument, iTime, capCommand.ExtraArguments.Length == 0 ? String.Empty : " for " + capCommand.ExtraArguments), strSpeaker);
 					
-						this.m_dicPlayers.TemporarilyBanPlayer(capCommand.ResposeScope, strSpeaker, capCommand.MatchedArguments[0].Argument, capCommand.ExtraArguments, iTime);
+						this.m_dicPlayers.TemporarilyBanPlayer(capCommand.ResposeScope, strSpeaker, capCommand.MatchedArguments[0].Argument,  capCommand.ExtraArguments, iTime);
 					}
 				}
 				else if (cpSpeakerPrivs.CanTemporaryBanPlayers == true) {
@@ -1619,7 +1619,7 @@ namespace PRoConEvents {
 						// issue temp ban
 						this.ExecuteCommand("procon.protected.events.write", "Plugins", "PluginAction", String.Format("Attempting to temporarily ban {0} for {1} seconds{0}", capCommand.MatchedArguments[0].Argument, iTime, capCommand.ExtraArguments.Length == 0 ? String.Empty : " for " + capCommand.ExtraArguments), strSpeaker);
 						
-						this.m_dicPlayers.TemporarilyBanPlayer(capCommand.ResposeScope, strSpeaker, capCommand.MatchedArguments[0].Argument, capCommand.ExtraArguments, iTime);
+						this.m_dicPlayers.TemporarilyBanPlayer(capCommand.ResposeScope, strSpeaker, capCommand.MatchedArguments[0].Argument,  capCommand.ExtraArguments, iTime);
 					}
 					else if (iTime <= 0) {
 						this.ExecuteCommand("procon.protected.send", "admin.say", "You're not allowed to permanently ban players!", "player", strSpeaker);
@@ -2187,8 +2187,23 @@ namespace PRoConEvents {
 				return target;
 			}
 
+			public string TimeToWords(int iTime)
+			{
+				try
+				{
+					TimeSpan t = new TimeSpan(0, iTime, 0);
+					return ("[" + (t.Days > 0 ? (t.Days.ToString() + "d") : "") + (t.Hours > 0 ? (t.Hours.ToString() + "h") : "") + (t.Minutes > 0 ? (t.Minutes.ToString() + "m") : "") + "]");
+				}
+				catch (Exception e)
+				{
+					this.ExecuteCommand("procon.protected.pluginconsole.write", "1 " + e.Message);
+					return string.Empty;
+				}
+			}
+			
 			public void TemporarilyBanPlayer(string responseScope, string accountName, string targetSoldierName, string reason, int time) {
 
+				reason = TimeToWords(time) + reason;
 				if (this.Contains(targetSoldierName) == true) {
 					if (this.BanMethod == BanTypes.PunkbusterGuid) {
 						this.SendResponse(responseScope, accountName, "Temporarily banning " + targetSoldierName + " for " + time + " minutes" + (reason.Length > 0 ? ", reason: " + reason : ""));

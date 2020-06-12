@@ -77,8 +77,8 @@
             // 
             this.cboReason.FormattingEnabled = true;
             this.cboReason.Location = new System.Drawing.Point(170, 27);
-            this.cboReason.Name = "cboReason";
             this.cboReason.MaxLength = 80;
+            this.cboReason.Name = "cboReason";
             this.cboReason.Size = new System.Drawing.Size(258, 23);
             this.cboReason.TabIndex = 5;
             // 
@@ -140,6 +140,7 @@
             this.txtTime.Name = "txtTime";
             this.txtTime.Size = new System.Drawing.Size(39, 23);
             this.txtTime.TabIndex = 1;
+            this.txtTime.Text = "1";
             this.txtTime.TextChanged += new System.EventHandler(this.txtTime_TextChanged);
             this.txtTime.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTime_KeyPress);
             // 
@@ -192,7 +193,6 @@
             this.rdoPunishOnGUID.Name = "rdoPunishOnGUID";
             this.rdoPunishOnGUID.Size = new System.Drawing.Size(50, 19);
             this.rdoPunishOnGUID.TabIndex = 3;
-            this.rdoPunishOnGUID.TabStop = true;
             this.rdoPunishOnGUID.Text = "Guid";
             this.rdoPunishOnGUID.UseVisualStyleBackColor = true;
             // 

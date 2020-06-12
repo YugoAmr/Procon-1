@@ -516,7 +516,7 @@ namespace PRoCon.Controls
             this.rdoPunishOnIP.Enabled = true & !this.m_blPunkbuster;
             this.rdoPunishOnGUID.Enabled = true;// &!this.m_blPunkbuster;
 
-            if (this.m_blPunkbuster == true)
+            //if (this.m_blPunkbuster == true)
             {
                 this.rdoPunishOnGUID.Checked = true;
             }
@@ -533,9 +533,9 @@ namespace PRoCon.Controls
             this.rdoPunishOnName.Enabled = true;
             this.rdoPunishOnGUID.Enabled = true & !this.m_blPunkbuster;
 
-            if (this.m_blPunkbuster == true)
+            //if (this.m_blPunkbuster == true)
             {
-                this.rdoPunishOnName.Checked = true;
+                this.rdoPunishOnGUID.Checked = true;
             }
 
             this.UpdateConfirmationLabel();
@@ -571,11 +571,21 @@ namespace PRoCon.Controls
 
             //obsolet with BF-3 R-8 string name = this.m_prcClient.Game is BF3Client ? "persona" : "name";
             string name = "name";
-
+            string accountName = this.m_prcClient.Username;
             string m_strReasonAdmin = this.cboReason.Text;
+
             m_strReasonAdmin = m_strReasonAdmin.Replace("%player_name%", this.m_strSoldierName);
 
-            string accountName = this.m_prcClient.Username;
+            int iTime = uscPlayerPunishPanel.GetBanLength(this.txtTime, this.cboTimeMultiplier);
+
+            if (rdoTemporaryBan.Checked && Program.ProconApplication.OptionsSettings.IncludeTimeReason && iTime > 0)
+            {
+                TimeSpan t = new TimeSpan(0, iTime, 0);
+                string time = (t.Days > 0 ? $"{t.Days}d" : "") + (t.Hours > 0 ? $"{t.Hours}h" : "") + (t.Minutes > 0 ? $"{t.Minutes}m" : "");
+                int iBanInfo = (80 - (time.Length + 3));
+                m_strReasonAdmin = $"[{time}] {(m_strReasonAdmin.Length > iBanInfo ? m_strReasonAdmin.Substring(0, iBanInfo) : m_strReasonAdmin)}";
+            }
+
             if (Program.ProconApplication.OptionsSettings.EnableAdminReason && accountName.Length > 0)
             {
                 int iBanInfo = (80 - 5 - (accountName.Length + 3));
@@ -675,6 +685,7 @@ namespace PRoCon.Controls
             }
             else if (this.rdoTemporaryBan.Checked == true)
             {
+
                 if (this.rdoPunishOnName.Checked == true)
                 {
 
@@ -684,13 +695,13 @@ namespace PRoCon.Controls
                         lstWords.Add(name);
                         lstWords.Add(this.m_strSoldierName);
                         lstWords.Add("seconds");
-                        lstWords.Add((uscPlayerPunishPanel.GetBanLength(this.txtTime, this.cboTimeMultiplier) * 60).ToString());
+                        lstWords.Add((iTime * 60).ToString());
                         lstWords.Add(m_strReasonAdmin);
                     }
                     else
                     {
                         lstWords.Add("punkBuster.pb_sv_command");
-                        lstWords.Add(String.Format(@"pb_sv_kick {0} {1} ""{2}""", this.m_strSlotID, uscPlayerPunishPanel.GetBanLength(this.txtTime, this.cboTimeMultiplier), "BC2! " + m_strReasonAdmin));
+                        lstWords.Add(String.Format(@"pb_sv_kick {0} {1} ""{2}""", this.m_strSlotID, iTime, "BC2! " + m_strReasonAdmin));
                     }
                     //strBuildPacket = String.Format(@"admin.banPlayer ""{0}"" seconds {1}", this.m_strSoldierName, this.GetBanLength() * 60);
                 }
@@ -700,7 +711,7 @@ namespace PRoCon.Controls
                     lstWords.Add("ip");
                     lstWords.Add(this.m_strIP);
                     lstWords.Add("seconds");
-                    lstWords.Add((uscPlayerPunishPanel.GetBanLength(this.txtTime, this.cboTimeMultiplier) * 60).ToString());
+                    lstWords.Add((iTime * 60).ToString());
                     lstWords.Add(m_strReasonAdmin);
 
                     //strBuildPacket = String.Format(@"admin.banIP ""{0}"" seconds {1}", this.m_strIP, this.GetBanLength() * 60);
@@ -711,7 +722,7 @@ namespace PRoCon.Controls
                     lstWords.Add("guid");
                     lstWords.Add(this.m_strGUID);
                     lstWords.Add("seconds");
-                    lstWords.Add((uscPlayerPunishPanel.GetBanLength(this.txtTime, this.cboTimeMultiplier) * 60).ToString());
+                    lstWords.Add((iTime * 60).ToString());
                     lstWords.Add(m_strReasonAdmin);
                 }
             }

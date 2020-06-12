@@ -124,6 +124,7 @@
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel12 = new System.Windows.Forms.Panel();
             this.tabAdv2 = new System.Windows.Forms.TabPage();
+            this.chkAdv2IncludeTimeReason = new System.Windows.Forms.CheckBox();
             this.chkAdv2EnableAdminReason = new System.Windows.Forms.CheckBox();
             this.lblAdv2BanTab = new System.Windows.Forms.Label();
             this.panel18 = new System.Windows.Forms.Panel();
@@ -1217,7 +1218,7 @@
             this.lblAdvLayerTabs.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAdvLayerTabs.Location = new System.Drawing.Point(17, 104);
             this.lblAdvLayerTabs.Name = "lblAdvLayerTabs";
-            this.lblAdvLayerTabs.Size = new System.Drawing.Size(64, 15);
+            this.lblAdvLayerTabs.Size = new System.Drawing.Size(65, 15);
             this.lblAdvLayerTabs.TabIndex = 19;
             this.lblAdvLayerTabs.Text = "Layer Tabs";
             // 
@@ -1250,7 +1251,7 @@
             this.lblAdvChatTab.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAdvChatTab.Location = new System.Drawing.Point(17, 64);
             this.lblAdvChatTab.Name = "lblAdvChatTab";
-            this.lblAdvChatTab.Size = new System.Drawing.Size(54, 15);
+            this.lblAdvChatTab.Size = new System.Drawing.Size(55, 15);
             this.lblAdvChatTab.TabIndex = 16;
             this.lblAdvChatTab.Text = "Chat Tab";
             // 
@@ -1281,7 +1282,7 @@
             this.lblAdvPlayerTab.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAdvPlayerTab.Location = new System.Drawing.Point(17, 24);
             this.lblAdvPlayerTab.Name = "lblAdvPlayerTab";
-            this.lblAdvPlayerTab.Size = new System.Drawing.Size(63, 15);
+            this.lblAdvPlayerTab.Size = new System.Drawing.Size(64, 15);
             this.lblAdvPlayerTab.TabIndex = 1;
             this.lblAdvPlayerTab.Text = "Player Tab";
             // 
@@ -1307,6 +1308,7 @@
             // 
             // tabAdv2
             // 
+            this.tabAdv2.Controls.Add(this.chkAdv2IncludeTimeReason);
             this.tabAdv2.Controls.Add(this.chkAdv2EnableAdminReason);
             this.tabAdv2.Controls.Add(this.lblAdv2BanTab);
             this.tabAdv2.Controls.Add(this.panel18);
@@ -1317,6 +1319,17 @@
             this.tabAdv2.TabIndex = 5;
             this.tabAdv2.Text = "Advanced2";
             this.tabAdv2.UseVisualStyleBackColor = true;
+            // 
+            // chkAdv2IncludeTimeReason
+            // 
+            this.chkAdv2IncludeTimeReason.AutoSize = true;
+            this.chkAdv2IncludeTimeReason.Location = new System.Drawing.Point(30, 67);
+            this.chkAdv2IncludeTimeReason.Name = "chkAdv2IncludeTimeReason";
+            this.chkAdv2IncludeTimeReason.Size = new System.Drawing.Size(207, 19);
+            this.chkAdv2IncludeTimeReason.TabIndex = 19;
+            this.chkAdv2IncludeTimeReason.Text = "Include time period in tban reason";
+            this.chkAdv2IncludeTimeReason.UseVisualStyleBackColor = true;
+            this.chkAdv2IncludeTimeReason.CheckedChanged += new System.EventHandler(this.chkAdv2IncludeTimeReason_CheckedChanged);
             // 
             // chkAdv2EnableAdminReason
             // 
@@ -1479,7 +1492,7 @@
             this.lblStatsPlayerTab.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStatsPlayerTab.Location = new System.Drawing.Point(17, 24);
             this.lblStatsPlayerTab.Name = "lblStatsPlayerTab";
-            this.lblStatsPlayerTab.Size = new System.Drawing.Size(63, 15);
+            this.lblStatsPlayerTab.Size = new System.Drawing.Size(64, 15);
             this.lblStatsPlayerTab.TabIndex = 12;
             this.lblStatsPlayerTab.Text = "Player Tab";
             // 
@@ -1672,5 +1685,6 @@
         private System.Windows.Forms.CheckBox chkEnablePluginDebugging;
         private System.Windows.Forms.Label lblPluginsDebug;
         private System.Windows.Forms.Panel panel19;
+        private System.Windows.Forms.CheckBox chkAdv2IncludeTimeReason;
     }
 }

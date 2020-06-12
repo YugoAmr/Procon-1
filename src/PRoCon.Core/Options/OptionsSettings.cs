@@ -31,6 +31,7 @@ namespace PRoCon.Core.Options
         public event OptionsEnabledHandler AdminMoveMessageChanged;
         public event OptionsEnabledHandler ChatDisplayAdminNameChanged;
         public event OptionsEnabledHandler EnableAdminReasonChanged;
+        public event OptionsEnabledHandler IncludeTimeReasonChanged;
 
         public event OptionsEnabledHandler LayerHideLocalPluginsChanged;
         public event OptionsEnabledHandler LayerHideLocalAccountsChanged;
@@ -325,6 +326,26 @@ namespace PRoCon.Core.Options
                 if (this.EnableAdminReasonChanged != null)
                 {
                     this.EnableAdminReasonChanged(value);
+                }
+            }
+        }
+
+        // EnableAdminReason
+        private bool m_isIncludeTimeReasonEnabled = true;
+        public bool IncludeTimeReason
+        {
+            get
+            {
+                return this.m_isIncludeTimeReasonEnabled;
+            }
+            set
+            {
+                this.m_isIncludeTimeReasonEnabled = value;
+                this.m_praApplication.SaveMainConfig();
+
+                if (this.IncludeTimeReasonChanged != null)
+                {
+                    this.IncludeTimeReasonChanged(value);
                 }
             }
         }
@@ -682,6 +703,7 @@ namespace PRoCon.Core.Options
             this.AllowAnonymousUsageData = true;
 
             this.EnableAdminReason = false;
+            this.IncludeTimeReason = false;
 
             this.LayerHideLocalAccounts = true;
             this.LayerHideLocalPlugins = true;

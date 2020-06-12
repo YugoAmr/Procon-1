@@ -1560,6 +1560,17 @@ namespace PRoCon.Controls
 
             string m_strReasonAdmin = this.cboBanlistReason.Text;
             string accountName = this.m_prcClient.Username;
+
+            int iTime = uscPlayerPunishPanel.GetBanLength(this.txtBanlistTime, this.cboBanlistTimeMultiplier);
+
+            if (rdoBanlistTemporary.Checked && Program.ProconApplication.OptionsSettings.IncludeTimeReason && iTime > 0)
+            {
+                TimeSpan t = new TimeSpan(0, iTime, 0);
+                string time = (t.Days > 0 ? $"{t.Days}d" : "") + (t.Hours > 0 ? $"{t.Hours}h" : "") + (t.Minutes > 0 ? $"{t.Minutes}m" : "");
+                int iBanInfo = (80 - (time.Length + 3));
+                m_strReasonAdmin = $"[{time}] {(m_strReasonAdmin.Length > iBanInfo ? m_strReasonAdmin.Substring(0, iBanInfo) : m_strReasonAdmin)}";
+            }
+
             if (Program.ProconApplication.OptionsSettings.EnableAdminReason && accountName.Length > 0)
             {
                 int iBanInfo = (80 - 5 - (accountName.Length + 3));
@@ -1581,7 +1592,7 @@ namespace PRoCon.Controls
                 }
                 else
                 {
-                    this.SendCommand("banList.add", name, this.txtBanlistManualBanName.Text, "seconds", (uscPlayerPunishPanel.GetBanLength(this.txtBanlistTime, this.cboBanlistTimeMultiplier) * 60).ToString(), m_strReasonAdmin);
+                    this.SendCommand("banList.add", name, this.txtBanlistManualBanName.Text, "seconds", (iTime * 60).ToString(), m_strReasonAdmin);
                 }
             }
             else if (this.rdoBanlistIP.Checked == true)
@@ -1592,7 +1603,7 @@ namespace PRoCon.Controls
                 }
                 else
                 {
-                    this.SendCommand("banList.add", "ip", this.txtBanlistManualBanIP.Text, "seconds", (uscPlayerPunishPanel.GetBanLength(this.txtBanlistTime, this.cboBanlistTimeMultiplier) * 60).ToString(), m_strReasonAdmin);
+                    this.SendCommand("banList.add", "ip", this.txtBanlistManualBanIP.Text, "seconds", (iTime * 60).ToString(), m_strReasonAdmin);
                 }
             }
             else if (this.rdoBanlistBc2GUID.Checked == true)
@@ -1603,7 +1614,7 @@ namespace PRoCon.Controls
                 }
                 else
                 {
-                    this.SendCommand("banList.add", "guid", this.txtBanlistManualBanGUID.Text.ToUpper(), "seconds", (uscPlayerPunishPanel.GetBanLength(this.txtBanlistTime, this.cboBanlistTimeMultiplier) * 60).ToString(), m_strReasonAdmin);
+                    this.SendCommand("banList.add", "guid", this.txtBanlistManualBanGUID.Text.ToUpper(), "seconds", (iTime * 60).ToString(), m_strReasonAdmin);
                 }
             }
             else if (this.rdoBanlistPbGUID.Checked == true)

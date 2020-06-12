@@ -41,6 +41,7 @@
             this.btnBanlistClearBanlist = new System.Windows.Forms.Button();
             this.btnBanlistUnban = new System.Windows.Forms.Button();
             this.lsvBanlist = new PRoCon.Controls.ControlsEx.ListViewNF();
+            this.colOffset = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colIP = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colGUID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -112,9 +113,9 @@
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.unbanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.colOffset = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tbcLists.SuspendLayout();
             this.tabBanlist.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spltBanlistManualBans)).BeginInit();
             this.spltBanlistManualBans.Panel1.SuspendLayout();
             this.spltBanlistManualBans.Panel2.SuspendLayout();
             this.spltBanlistManualBans.SuspendLayout();
@@ -367,6 +368,10 @@
             this.lsvBanlist.SelectedIndexChanged += new System.EventHandler(this.lsvBanlist_SelectedIndexChanged);
             this.lsvBanlist.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lsvBanlist_MouseUp);
             // 
+            // colOffset
+            // 
+            this.colOffset.Text = "#";
+            // 
             // colName
             // 
             this.colName.Text = "Name";
@@ -395,10 +400,12 @@
             // rdoBanlistBc2GUID
             // 
             this.rdoBanlistBc2GUID.AutoSize = true;
+            this.rdoBanlistBc2GUID.Checked = true;
             this.rdoBanlistBc2GUID.Location = new System.Drawing.Point(278, 6);
             this.rdoBanlistBc2GUID.Name = "rdoBanlistBc2GUID";
             this.rdoBanlistBc2GUID.Size = new System.Drawing.Size(67, 19);
             this.rdoBanlistBc2GUID.TabIndex = 116;
+            this.rdoBanlistBc2GUID.TabStop = true;
             this.rdoBanlistBc2GUID.Text = "EA Guid";
             this.rdoBanlistBc2GUID.UseVisualStyleBackColor = true;
             this.rdoBanlistBc2GUID.CheckedChanged += new System.EventHandler(this.rdoBanlistBc2GUID_CheckedChanged);
@@ -536,7 +543,6 @@
             // 
             // txtBanlistManualBanGUID
             // 
-            this.txtBanlistManualBanGUID.Enabled = false;
             this.txtBanlistManualBanGUID.Location = new System.Drawing.Point(276, 28);
             this.txtBanlistManualBanGUID.Name = "txtBanlistManualBanGUID";
             this.txtBanlistManualBanGUID.Size = new System.Drawing.Size(243, 23);
@@ -605,18 +611,17 @@
             // rdoBanlistName
             // 
             this.rdoBanlistName.AutoSize = true;
-            this.rdoBanlistName.Checked = true;
             this.rdoBanlistName.Location = new System.Drawing.Point(8, 6);
             this.rdoBanlistName.Name = "rdoBanlistName";
             this.rdoBanlistName.Size = new System.Drawing.Size(57, 19);
             this.rdoBanlistName.TabIndex = 3;
-            this.rdoBanlistName.TabStop = true;
             this.rdoBanlistName.Text = "Name";
             this.rdoBanlistName.UseVisualStyleBackColor = true;
             this.rdoBanlistName.CheckedChanged += new System.EventHandler(this.rdoBanlistName_CheckedChanged);
             // 
             // txtBanlistManualBanName
             // 
+            this.txtBanlistManualBanName.Enabled = false;
             this.txtBanlistManualBanName.Location = new System.Drawing.Point(8, 28);
             this.txtBanlistManualBanName.Name = "txtBanlistManualBanName";
             this.txtBanlistManualBanName.Size = new System.Drawing.Size(128, 23);
@@ -1080,10 +1085,6 @@
             this.unbanToolStripMenuItem.Text = "Unban";
             this.unbanToolStripMenuItem.Click += new System.EventHandler(this.unbanToolStripMenuItem_Click);
             // 
-            // colOffset
-            // 
-            this.colOffset.Text = "#";
-            // 
             // uscListControlPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1099,6 +1100,7 @@
             this.spltBanlistManualBans.Panel1.PerformLayout();
             this.spltBanlistManualBans.Panel2.ResumeLayout(false);
             this.spltBanlistManualBans.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spltBanlistManualBans)).EndInit();
             this.spltBanlistManualBans.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picBansFilterMagnifier)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCloseOpenManualBans)).EndInit();

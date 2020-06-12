@@ -1413,6 +1413,7 @@ frmOptions.tabAdvanced.lblAdvSpecialSwitches.lblAdvShowDICESpecialOptionsNotice=
 frmOptions.tabAdvanced2=Advanced-2
 frmOptions.lblAdv2BanTab=Bans
 frmOptions.tabBasics.chkAdv2EnableAdminReason=Enable Admin name in ban reason
+frmOptions.tabBasics.chkAdv2IncludeTimeReason=Include time period in tban reason
 
 frmOptions.tabPlayerLookup=Stats-Links
 frmOptions.tabPlayerLookup.colStatsLinksName=Name
