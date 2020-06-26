@@ -24,9 +24,9 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Name", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("IpAddress", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Guid", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("Name", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("IpAddress", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("Guid", System.Windows.Forms.HorizontalAlignment.Left);
             this.tbcLists = new System.Windows.Forms.TabControl();
             this.tabBanlist = new System.Windows.Forms.TabPage();
             this.spltBanlistManualBans = new System.Windows.Forms.SplitContainer();
@@ -113,6 +113,7 @@
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.unbanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.picBansFilterClear = new System.Windows.Forms.PictureBox();
             this.tbcLists.SuspendLayout();
             this.tabBanlist.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spltBanlistManualBans)).BeginInit();
@@ -143,6 +144,7 @@
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picSpectatorList)).BeginInit();
             this.ctxBanlistMenuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBansFilterClear)).BeginInit();
             this.SuspendLayout();
             // 
             // tbcLists
@@ -182,6 +184,7 @@
             // 
             // spltBanlistManualBans.Panel1
             // 
+            this.spltBanlistManualBans.Panel1.Controls.Add(this.picBansFilterClear);
             this.spltBanlistManualBans.Panel1.Controls.Add(this.picBansFilterMagnifier);
             this.spltBanlistManualBans.Panel1.Controls.Add(this.BansFilter);
             this.spltBanlistManualBans.Panel1.Controls.Add(this.pagination1);
@@ -229,9 +232,9 @@
             // 
             this.BansFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.BansFilter.Location = new System.Drawing.Point(314, 630);
+            this.BansFilter.Location = new System.Drawing.Point(334, 630);
             this.BansFilter.Name = "BansFilter";
-            this.BansFilter.Size = new System.Drawing.Size(280, 23);
+            this.BansFilter.Size = new System.Drawing.Size(260, 23);
             this.BansFilter.TabIndex = 109;
             this.BansFilter.TextChanged += new System.EventHandler(this.BansFilter_TextChanged);
             // 
@@ -344,16 +347,16 @@
             this.colReason});
             this.lsvBanlist.FullRowSelect = true;
             this.lsvBanlist.GridLines = true;
-            listViewGroup1.Header = "Name";
-            listViewGroup1.Name = "lvgName";
-            listViewGroup2.Header = "IpAddress";
-            listViewGroup2.Name = "lvgIP";
-            listViewGroup3.Header = "Guid";
-            listViewGroup3.Name = "lvgGUID";
+            listViewGroup4.Header = "Name";
+            listViewGroup4.Name = "lvgName";
+            listViewGroup5.Header = "IpAddress";
+            listViewGroup5.Name = "lvgIP";
+            listViewGroup6.Header = "Guid";
+            listViewGroup6.Name = "lvgGUID";
             this.lsvBanlist.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1,
-            listViewGroup2,
-            listViewGroup3});
+            listViewGroup4,
+            listViewGroup5,
+            listViewGroup6});
             this.lsvBanlist.HideSelection = false;
             this.lsvBanlist.Location = new System.Drawing.Point(0, 0);
             this.lsvBanlist.MultiSelect = false;
@@ -1085,6 +1088,18 @@
             this.unbanToolStripMenuItem.Text = "Unban";
             this.unbanToolStripMenuItem.Click += new System.EventHandler(this.unbanToolStripMenuItem_Click);
             // 
+            // picBansFilterClear
+            // 
+            this.picBansFilterClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.picBansFilterClear.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picBansFilterClear.Location = new System.Drawing.Point(312, 634);
+            this.picBansFilterClear.Name = "picBansFilterClear";
+            this.picBansFilterClear.Size = new System.Drawing.Size(16, 16);
+            this.picBansFilterClear.TabIndex = 111;
+            this.picBansFilterClear.TabStop = false;
+            this.picBansFilterClear.Visible = false;
+            this.picBansFilterClear.Click += new System.EventHandler(this.picBansFilterClear_Click);
+            // 
             // uscListControlPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1134,6 +1149,7 @@
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picSpectatorList)).EndInit();
             this.ctxBanlistMenuStrip.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picBansFilterClear)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1226,5 +1242,6 @@
         private System.Windows.Forms.TextBox BansFilter;
         private System.Windows.Forms.PictureBox picBansFilterMagnifier;
         private System.Windows.Forms.ColumnHeader colOffset;
+        private System.Windows.Forms.PictureBox picBansFilterClear;
     }
 }

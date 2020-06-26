@@ -219,7 +219,7 @@ namespace PRoCon.Controls
 
             this.picCloseOpenManualBans.Image = this.m_frmMain.iglIcons.Images["arrow_down.png"];
 
-            this.picBanlistIPError.Image = this.picBanlistGUIDError.Image = this.m_frmMain.iglIcons.Images["cross.png"];
+            this.picBanlistIPError.Image = this.picBanlistGUIDError.Image = this.picBansFilterClear.Image = this.m_frmMain.iglIcons.Images["cross.png"];
             //this.picBanlistManualBanOkay.Image = this.m_frmMain.iglIcons.Images["tick.png"];
 
             this.copyToolStripMenuItem.Image = this.m_frmMain.iglIcons.Images["page_copy.png"];
@@ -1265,6 +1265,7 @@ namespace PRoCon.Controls
         private void BansFilter_TextChanged(object sender, EventArgs e)
         {
             this.BansSource.Filter = this.BansFilter.Text;
+            picBansFilterClear.Visible = BansFilter.Text.Trim().Length > 0;
         }
 
         public void OnBanList(PRoConClient sender, List<CBanInfo> lstBans)
@@ -1809,7 +1810,11 @@ namespace PRoCon.Controls
             this.SendCommand("punkBuster.pb_sv_command", this.m_prcClient.Variables.GetVariable<string>("PUNKBUSTER_BANLIST_REFRESH", "pb_sv_banlist BC2! "));
         }
 
-        #endregion
+        private void picBansFilterClear_Click(object sender, EventArgs e)
+        {
+            BansFilter.Text = string.Empty;
+        }
 
+        #endregion
     }
 }
