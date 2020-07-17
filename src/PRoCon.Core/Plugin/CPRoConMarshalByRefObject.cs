@@ -213,7 +213,7 @@ namespace PRoCon.Core.Plugin
         {
             List<CMap> lstReturn = default(List<CMap>);
 
-            if (_getAccountPrivilegesDelegate != null)
+            if (_getMapDefinesDelegate != null)
             {
                 lstReturn = _getMapDefinesDelegate();
             }
