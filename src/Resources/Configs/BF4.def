@@ -245,6 +245,7 @@ procon.protected.weapons.add None "U_MTAR21" Primary Carbine
 procon.protected.weapons.add Demolition "U_MPX" Primary SMG
 procon.protected.weapons.add Demolition "U_MX4" Primary SMG
 procon.protected.weapons.add Demolition "U_NLAW" Secondary ProjectileExplosive
+procon.protected.weapons.add Demolition "U_SP_NLAW" Secondary ProjectileExplosive
 procon.protected.weapons.add None "U_P226" Auxiliary Handgun
 procon.protected.weapons.add Demolition "U_P90" Primary SMG
 procon.protected.weapons.add Support "U_Pecheneg" Primary LMG
