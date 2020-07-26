@@ -205,6 +205,7 @@ namespace PRoCon.Core.Events
                 this.m_prcClient.Game.PlayerMovedByAdmin += new FrostbiteClient.PlayerMovedByAdminHandler(Game_PlayerMovedByAdmin);
 
                 this.m_prcClient.PlayerKilled += new PRoConClient.PlayerKilledHandler(m_prcClient_PlayerKilled);
+                this.m_prcClient.PlayerSpawned += new PRoConClient.PlayerSpawnedHandler(m_prcClient_PlayerSpawned);
                 this.m_prcClient.PunkbusterPlayerUnbanned += new PRoConClient.PunkbusterBanHandler(m_prcClient_PlayerUnbanned);
 
                 this.m_prcClient.Game.BanListAdd += new FrostbiteClient.BanListAddHandler(m_prcClient_BanListAdd);
@@ -452,6 +453,13 @@ namespace PRoCon.Core.Events
             {
                 this.ProcessEvent(EventType.Playerlist, CapturableEvents.PlayerSuicide, kKillerVictimDetails.Killer.SoldierName);
             }
+        }
+
+        private void m_prcClient_PlayerSpawned(PRoConClient sender, string playerName, Inventory spawnedInventory)
+        {
+            //InvokeOnAllEnabled("OnPlayerSpawned", new object[] { soldierName, spawnedInventory });
+            this.ProcessEvent(EventType.Playerlist, CapturableEvents.PlayerSpawned, playerName);
+
         }
 
         private void m_prcClient_PlayerLeft(FrostbiteClient sender, string playerName, CPlayerInfo cpiPlayer)

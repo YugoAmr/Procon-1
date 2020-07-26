@@ -1767,6 +1767,7 @@ uscEvents.lsvEvents.PluginDisabled={0}
 uscEvents.lsvEvents.PluginAction={0}
 
 uscEvents.lsvEvents.PlayerSuicide={0}
+uscEvents.lsvEvents.PlayerSpawned={0}
 uscEvents.lsvEvents.PlayerSwitchedTeams={0} wechselte von {1} zu {2}
 uscEvents.lsvEvents.PlayerTeamKilled={0} teamkilled {1}
 
