@@ -644,6 +644,7 @@ namespace PRoCon.Core.Plugin
                 MetadataReference.CreateFromFile(string.Format(dotnetRuntimePath, "System.ServiceModel")),
                 MetadataReference.CreateFromFile(string.Format(dotnetRuntimePath, "System.ServiceModel.Channels")),
                 MetadataReference.CreateFromFile(string.Format(dotnetRuntimePath, "System.ComponentModel")),
+                MetadataReference.CreateFromFile(string.Format(dotnetRuntimePath, "System.Xml.Linq")),
 
                 MetadataReference.CreateFromFile(string.Format(proconRuntimePath, "MySql.Data")),
                 MetadataReference.CreateFromFile(string.Format(proconRuntimePath, "PRoCon.Core"))
