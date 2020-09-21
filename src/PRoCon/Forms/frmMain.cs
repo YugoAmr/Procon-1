@@ -11,7 +11,7 @@ namespace PRoCon.Forms
     using Core.Remote;
     using PRoCon.Controls;
 
-    public partial class frmMain : Form
+    public partial class frmMain : Form, IMessageFilter
     {
 
         public delegate PRoConApplication WindowLoadedHandler(bool execute);
@@ -48,7 +48,7 @@ namespace PRoCon.Forms
         public frmMain(string[] args)
         {
             InitializeComponent();
-
+            Application.AddMessageFilter(this);
             this.SetStyle(ControlStyles.UserPaint, true);
             this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             this.SetStyle(ControlStyles.DoubleBuffer, true);
@@ -1106,6 +1106,29 @@ namespace PRoCon.Forms
         {
             //this.cboServerList.Size = new Size(this.tlsConnections.Bounds.Width - this.toolsStripDropDownButton.Bounds.Width - this.cboServerList.Bounds.Left - 15, 23);
         }
+
+        public bool PreFilterMessage(ref Message m)
+        {
+            if (m.Msg == 0x20a)
+            {
+                // WM_MOUSEWHEEL, find the control at screen position m.LParam
+                var hWnd = WindowFromPoint(Cursor.Position);
+
+                if (hWnd != IntPtr.Zero && hWnd != m.HWnd && Control.FromHandle(hWnd) is var control && control != null 
+                    && (control is RichTextBox || control is ListView || control?.Parent is PropertyGrid))
+                {
+                    SendMessage(hWnd, m.Msg, m.WParam, m.LParam);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        // P/Invoke declarations
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern IntPtr WindowFromPoint(Point pt);
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wp, IntPtr lp);
 
     }
 }

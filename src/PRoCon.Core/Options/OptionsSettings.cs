@@ -330,7 +330,7 @@ namespace PRoCon.Core.Options
             }
         }
 
-        // EnableAdminReason
+        // IncludeTimeInReason
         private bool m_isIncludeTimeReasonEnabled = true;
         public bool IncludeTimeReason
         {
