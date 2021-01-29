@@ -196,6 +196,7 @@ namespace PRoCon.Core.Events
                 this.m_prcClient.Game.LevelLoaded += new FrostbiteClient.LevelLoadedHandler(m_prcClient_LevelLoaded);
 
                 this.m_prcClient.Game.PlayerJoin += new FrostbiteClient.PlayerEventHandler(m_prcClient_PlayerJoin);
+                this.m_prcClient.Game.PlayerAuthenticated += new FrostbiteClient.PlayerEventHandler(m_prcClient_PlayerAuthenticated);
                 this.m_prcClient.Game.PlayerLeft += new FrostbiteClient.PlayerLeaveHandler(m_prcClient_PlayerLeft);
                 this.m_prcClient.Game.PlayerDisconnected += new FrostbiteClient.PlayerDisconnectedHandler(m_prcClient_PlayerDisconnected);
                 this.m_prcClient.Game.PlayerKicked += new FrostbiteClient.PlayerKickedHandler(m_prcClient_PlayerKicked);
@@ -467,9 +468,14 @@ namespace PRoCon.Core.Events
             this.ProcessEvent(EventType.Playerlist, CapturableEvents.PlayerLeave, playerName);
         }
 
-        private void m_prcClient_PlayerJoin(FrostbiteClient sender, string playerName)
+        private void m_prcClient_PlayerJoin(FrostbiteClient sender, string[] parameters)
         {
-            this.ProcessEvent(EventType.Playerlist, CapturableEvents.PlayerJoin, playerName);
+            this.ProcessEvent(EventType.Playerlist, CapturableEvents.PlayerJoin, parameters);
+        }
+
+        private void m_prcClient_PlayerAuthenticated(FrostbiteClient sender, string[] parameters)
+        {
+            this.ProcessEvent(EventType.Playerlist, CapturableEvents.PlayerAuthenticated, parameters);
         }
 
         private void m_prcClient_PlayerDisconnected(FrostbiteClient sender, string playerName, string reason)

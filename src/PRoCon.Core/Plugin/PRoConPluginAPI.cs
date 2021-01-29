@@ -402,6 +402,13 @@ namespace PRoCon.Core.Plugin
                 this.FrostbitePlayerInfoList.Add(soldierName, new CPlayerInfo(soldierName, "", 0, 24));
             }
         }
+        public virtual void OnPlayerJoin(string soldierName, string guid)
+        {
+            if (this.FrostbitePlayerInfoList.ContainsKey(soldierName) == false)
+            {
+                this.FrostbitePlayerInfoList.Add(soldierName, new CPlayerInfo(soldierName, "", 0, 24));
+            }
+        }
 
         public virtual void OnPlayerLeft(CPlayerInfo playerInfo)
         {
@@ -430,6 +437,8 @@ namespace PRoCon.Core.Plugin
         }
 
         public virtual void OnPlayerAuthenticated(string soldierName, string guid) { }
+        public virtual void OnPlayerAuthenticated(string soldierName) { }
+
         public virtual void OnPlayerKilled(Kill kKillerVictimDetails) { }
         public virtual void OnPlayerKicked(string soldierName, string reason) { }
         public virtual void OnPlayerSpawned(string soldierName, Inventory spawnedInventory) { }

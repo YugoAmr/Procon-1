@@ -509,11 +509,11 @@ namespace PRoCon.Core.Consoles
             }
         }
 
-        private void m_prcClient_PlayerJoin(FrostbiteClient sender, string playerName)
+        private void m_prcClient_PlayerJoin(FrostbiteClient sender, string[] parameters)
         {
             if (LogJoinLeaving == true)
             {
-                Write(DateTime.UtcNow.ToUniversalTime().AddHours(Client.Game.UtcOffset).ToLocalTime(), String.Format("^4{0}", Client.Language.GetLocalized("uscChatPanel.chkDisplayOnJoinLeaveEvents.Joined", playerName)));
+                Write(DateTime.UtcNow.ToUniversalTime().AddHours(Client.Game.UtcOffset).ToLocalTime(), String.Format("^4{0}", Client.Language.GetLocalized("uscChatPanel.chkDisplayOnJoinLeaveEvents.Joined", parameters)));
             }
         }
 

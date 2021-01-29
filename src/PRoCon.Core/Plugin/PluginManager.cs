@@ -1057,7 +1057,7 @@ namespace PRoCon.Core.Plugin
             ProconClient.Game.PlayerJoin -= new FrostbiteClient.PlayerEventHandler(m_prcClient_PlayerJoin);
             ProconClient.Game.PlayerLeft -= new FrostbiteClient.PlayerLeaveHandler(m_prcClient_PlayerLeft);
             ProconClient.Game.PlayerDisconnected -= new FrostbiteClient.PlayerDisconnectedHandler(m_prcClient_PlayerDisconnected);
-            ProconClient.Game.PlayerAuthenticated -= new FrostbiteClient.PlayerAuthenticatedHandler(m_prcClient_PlayerAuthenticated);
+            ProconClient.Game.PlayerAuthenticated -= new FrostbiteClient.PlayerEventHandler(m_prcClient_PlayerAuthenticated);
             ProconClient.Game.PlayerKicked -= new FrostbiteClient.PlayerKickedHandler(m_prcClient_PlayerKicked);
             ProconClient.Game.PlayerChangedTeam -= new FrostbiteClient.PlayerTeamChangeHandler(m_prcClient_PlayerChangedTeam);
             ProconClient.Game.PlayerChangedSquad -= new FrostbiteClient.PlayerTeamChangeHandler(m_prcClient_PlayerChangedSquad);
@@ -1313,7 +1313,7 @@ namespace PRoCon.Core.Plugin
             ProconClient.Game.PlayerJoin += new FrostbiteClient.PlayerEventHandler(m_prcClient_PlayerJoin);
             ProconClient.Game.PlayerLeft += new FrostbiteClient.PlayerLeaveHandler(m_prcClient_PlayerLeft);
             ProconClient.Game.PlayerDisconnected += new FrostbiteClient.PlayerDisconnectedHandler(m_prcClient_PlayerDisconnected);
-            ProconClient.Game.PlayerAuthenticated += new FrostbiteClient.PlayerAuthenticatedHandler(m_prcClient_PlayerAuthenticated);
+            ProconClient.Game.PlayerAuthenticated += new FrostbiteClient.PlayerEventHandler(m_prcClient_PlayerAuthenticated);
             ProconClient.Game.PlayerKicked += new FrostbiteClient.PlayerKickedHandler(m_prcClient_PlayerKicked);
             ProconClient.Game.PlayerChangedTeam += new FrostbiteClient.PlayerTeamChangeHandler(m_prcClient_PlayerChangedTeam);
             ProconClient.Game.PlayerChangedSquad += new FrostbiteClient.PlayerTeamChangeHandler(m_prcClient_PlayerChangedSquad);
@@ -1760,9 +1760,9 @@ namespace PRoCon.Core.Plugin
             InvokeOnAllEnabled("OnConnectionClosed");
         }
 
-        private void m_prcClient_PlayerJoin(FrostbiteClient sender, string playerName)
+        private void m_prcClient_PlayerJoin(FrostbiteClient sender, string[] parameters)
         {
-            InvokeOnAllEnabled("OnPlayerJoin", playerName);
+            InvokeOnAllEnabled("OnPlayerJoin", parameters);
         }
 
         private void m_prcClient_PlayerLeft(FrostbiteClient sender, string playerName, CPlayerInfo cpiPlayer)
@@ -1781,9 +1781,9 @@ namespace PRoCon.Core.Plugin
             InvokeOnAllEnabled("OnPlayerDisconnected", playerName, reason);
         }
 
-        private void m_prcClient_PlayerAuthenticated(FrostbiteClient sender, string playerName, string playerGuid)
+        private void m_prcClient_PlayerAuthenticated(FrostbiteClient sender, string[] parameters)
         {
-            InvokeOnAllEnabled("OnPlayerAuthenticated", playerName, playerGuid);
+            InvokeOnAllEnabled("OnPlayerAuthenticated", parameters);
         }
 
         private void m_prcClient_PlayerKicked(FrostbiteClient sender, string strSoldierName, string strReason)

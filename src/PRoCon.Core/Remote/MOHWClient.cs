@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace PRoCon.Core.Remote
@@ -236,7 +237,7 @@ namespace PRoCon.Core.Remote
 
         public override event ServerInfoHandler ServerInfo;
 
-        public override event PlayerAuthenticatedHandler PlayerAuthenticated;
+        //public override event PlayerEventHandler PlayerAuthenticated;
 
         //public override event FrostbiteClient.ListPlayersHandler ListPlayers;
 
@@ -833,7 +834,7 @@ namespace PRoCon.Core.Remote
         #endregion
 
         #region Overridden Response Handlers
-
+        /*
         protected override void DispatchPlayerOnJoinRequest(FrostbiteConnection sender, Packet cpRequestPacket)
         {
             base.DispatchPlayerOnJoinRequest(sender, cpRequestPacket);
@@ -842,10 +843,10 @@ namespace PRoCon.Core.Remote
             {
                 if (PlayerAuthenticated != null)
                 {
-                    this.PlayerAuthenticated(this, cpRequestPacket.Words[1], cpRequestPacket.Words[2]);
+                    this.PlayerAuthenticated(this, cpRequestPacket.Words.Skip(1).ToArray());
                 }
             }
-        }
+        }*/
 
         protected override void DispatchServerInfoResponse(FrostbiteConnection sender, Packet cpRecievedPacket, Packet cpRequestPacket)
         {

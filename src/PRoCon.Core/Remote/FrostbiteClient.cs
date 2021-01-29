@@ -2477,7 +2477,7 @@ namespace PRoCon.Core.Remote
 
         public delegate void PlayerAuthenticatedHandler(FrostbiteClient sender, string playerName, string playerGuid);
 
-        public delegate void PlayerEventHandler(FrostbiteClient sender, string playerName);
+        public delegate void PlayerEventHandler(FrostbiteClient sender, string[] parameters);
 
         public delegate void PlayerIdleStateHandler(FrostbiteClient sender, string soldierName, int idleTime);
 
@@ -4253,7 +4253,7 @@ namespace PRoCon.Core.Remote
             {
                 if (PlayerJoin != null && cpRequestPacket.Words[1].Length > 0)
                 {
-                    this.PlayerJoin(this, cpRequestPacket.Words[1]);
+                    this.PlayerJoin(this, cpRequestPacket.Words.Skip(1).ToArray());
                 }
             }
         }
@@ -4297,11 +4297,11 @@ namespace PRoCon.Core.Remote
 
         protected virtual void DispatchPlayerOnAuthenticatedRequest(FrostbiteConnection sender, Packet cpRequestPacket)
         {
-            if (cpRequestPacket.Words.Count >= 3)
+            if (cpRequestPacket.Words.Count >= 2)
             {
                 if (PlayerAuthenticated != null)
                 {
-                    this.PlayerAuthenticated(this, cpRequestPacket.Words[1], cpRequestPacket.Words[2]);
+                    this.PlayerAuthenticated(this, cpRequestPacket.Words.Skip(1).ToArray());
                 }
             }
         }
@@ -4564,7 +4564,7 @@ namespace PRoCon.Core.Remote
         public virtual event PlayerEventHandler PlayerJoin;
         public virtual event PlayerLeaveHandler PlayerLeft;
         public virtual event PlayerDisconnectedHandler PlayerDisconnected;
-        public virtual event PlayerAuthenticatedHandler PlayerAuthenticated;
+        public virtual event PlayerEventHandler PlayerAuthenticated;
         public virtual event PlayerKickedHandler PlayerKicked;
         public virtual event PlayerTeamChangeHandler PlayerChangedTeam;
         public virtual event PlayerTeamChangeHandler PlayerChangedSquad;

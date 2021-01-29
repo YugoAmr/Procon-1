@@ -1561,6 +1561,7 @@ uscEvents.gpbCaptures.btncleareventbox=Очистить список событ�
 uscEvents.gpbCaptures.chkEventsEnableScrolling=Разрешить прокрутку списка
 
 uscEvents.lsvEvents.PlayerJoin={0} зашёл на сервер
+uscEvents.lsvEvents.PlayerAuthenticated={0}
 uscEvents.lsvEvents.PlayerLeave={0} покинул сервер
 uscEvents.lsvEvents.PlayerDisconnected={0} отключен от сервера (Причина: {1})
 uscEvents.lsvEvents.PlayerKilled={0} убил {1} {2}

@@ -4,6 +4,7 @@
     {
         // BFBC2 Server events
         PlayerJoin,
+        PlayerAuthenticated,
         PlayerSpawned,
         PlayerLeave,
         PlayerDisconnected,

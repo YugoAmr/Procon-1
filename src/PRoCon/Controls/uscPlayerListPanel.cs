@@ -984,17 +984,21 @@ namespace PRoCon.Controls
             });
         }
 
-        private void m_prcClient_PlayerJoin(FrostbiteClient sender, string playerName)
+        private void m_prcClient_PlayerJoin(FrostbiteClient sender, string[] parameters)
         {
-            this.InvokeIfRequired(() =>
+            if (parameters.Length > 0)
             {
-                if (this.Players.ContainsKey(playerName) == false)
+                string playerName = parameters[0];
+                this.InvokeIfRequired(() =>
                 {
-                    this.Players.Add(playerName, this.CreatePlayer(new CPlayerInfo(playerName, String.Empty, 0, 0)));
+                    if (this.Players.ContainsKey(playerName) == false)
+                    {
+                        this.Players.Add(playerName, this.CreatePlayer(new CPlayerInfo(playerName, String.Empty, 0, 0)));
 
-                    this.ArrangePlayers();
-                }
-            });
+                        this.ArrangePlayers();
+                    }
+                });
+            }
         }
 
         /*

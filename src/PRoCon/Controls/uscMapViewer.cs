@@ -387,15 +387,19 @@ namespace PRoCon.Controls
             });
         }
 
-        private void m_prcClient_PlayerJoin(FrostbiteClient sender, string playerName)
+        private void m_prcClient_PlayerJoin(FrostbiteClient sender, string[] parameters)
         {
-            this.InvokeIfRequired(() =>
+            if (parameters.Length > 0)
             {
-                if (this.cboPlayers.Items.Contains(playerName) == false)
+                string playerName = parameters[0];
+                this.InvokeIfRequired(() =>
                 {
-                    this.cboPlayers.Items.Add(playerName);
-                }
-            });
+                    if (this.cboPlayers.Items.Contains(playerName) == false)
+                    {
+                        this.cboPlayers.Items.Add(playerName);
+                    }
+                });
+            }
         }
 
         private void m_prcClient_PlayerLeft(FrostbiteClient sender, string playerName, CPlayerInfo cpiPlayer)

@@ -1778,6 +1778,7 @@ uscEvents.gpbCaptures.btncleareventbox=Clear Eventlist
 uscEvents.gpbCaptures.chkEventsEnableScrolling=Enable scrolling
 
 uscEvents.lsvEvents.PlayerJoin={0} joined the server
+uscEvents.lsvEvents.PlayerAuthenticated={0}
 uscEvents.lsvEvents.PlayerLeave={0} left the server
 uscEvents.lsvEvents.PlayerDisconnected={0} disconnected from the server (reason: {1})
 uscEvents.lsvEvents.PlayerKilled={0} killed {1} {2}

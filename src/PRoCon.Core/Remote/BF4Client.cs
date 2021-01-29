@@ -281,7 +281,7 @@ namespace PRoCon.Core.Remote
 
         public override event ServerInfoHandler ServerInfo;
 
-        public override event PlayerAuthenticatedHandler PlayerAuthenticated;
+        //public override event PlayerAuthenticatedHandler PlayerAuthenticated;
 
         public override event ListPlayersHandler ListPlayers;
 
@@ -819,7 +819,7 @@ namespace PRoCon.Core.Remote
         #endregion
 
         #region Overridden Response Handlers
-
+        /*
         protected override void DispatchPlayerOnJoinRequest(FrostbiteConnection sender, Packet cpRequestPacket)
         {
             base.DispatchPlayerOnJoinRequest(sender, cpRequestPacket);
@@ -831,7 +831,7 @@ namespace PRoCon.Core.Remote
                     this.PlayerAuthenticated(this, cpRequestPacket.Words[1], cpRequestPacket.Words[2]);
                 }
             }
-        }
+        }*/
 
         protected override void DispatchServerInfoResponse(FrostbiteConnection sender, Packet cpRecievedPacket, Packet cpRequestPacket)
         {

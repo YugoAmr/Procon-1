@@ -1735,6 +1735,7 @@ uscEvents.gpbCaptures.btncleareventbox=Ereignisliste löschen
 uscEvents.gpbCaptures.chkEventsEnableScrolling=automatisches Scrollen aktivieren
 
 uscEvents.lsvEvents.PlayerJoin={0} betrat den Server
+uscEvents.lsvEvents.PlayerAuthenticated={0}
 uscEvents.lsvEvents.PlayerLeave={0} verließ den Server
 uscEvents.lsvEvents.PlayerDisconnected={0} wurde vom Server getrennt (Grund: {1})
 uscEvents.lsvEvents.PlayerKilled={0} killed {1} {2}
