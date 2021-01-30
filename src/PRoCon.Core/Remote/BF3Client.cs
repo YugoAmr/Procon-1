@@ -207,7 +207,7 @@ namespace PRoCon.Core.Remote
 
         public override event ServerInfoHandler ServerInfo;
 
-        //public override event PlayerEventHandler PlayerAuthenticated;
+        //public override event PlayerAuthenticatedHandler PlayerAuthenticated;
 
         public override event ListPlayersHandler ListPlayers;
 

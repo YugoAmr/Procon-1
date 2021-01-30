@@ -120,46 +120,23 @@ namespace PRoCon.Core.Plugin
                     switch (methodName)
                     {
                         case "OnPlayerJoin":
-                            {
-                                MethodInfo method = this.GetType().GetMethods()
-                                    .Where(x => x.Name.Equals(methodName)
-                                        && x.GetParameters().Length == parameters.Length
-                                        && x.DeclaringType == this.GetType())
-                                    .FirstOrDefault();
-                                if (method != null)
-                                {
-                                    returnValue = method.Invoke(this, parameters);
-                                }
-                                else
-                                {
-                                    method = this.GetType().GetMethods()
-                                        .Where(x => x.Name.Equals(methodName)
-                                            && x.GetParameters().Length == parameters.Length - 1
-                                            && x.DeclaringType == this.GetType())
-                                        .FirstOrDefault();
-                                    returnValue = method?.Invoke(this, parameters.Take(parameters.Length - 1).ToArray());
-                                }
-                            }
-                            break;
                         case "OnPlayerAuthenticated":
                             {
-                                MethodInfo method = this.GetType().GetMethods()
-                                    .Where(x => x.Name.Equals(methodName)
-                                        && x.GetParameters().Length == parameters.Length
-                                        && x.DeclaringType == this.GetType())
-                                    .FirstOrDefault();
-                                if (method != null)
+                                foreach (MethodInfo method in this.GetType().GetMethods()
+                                    .Where(x => x.Name.Equals(methodName) && x.DeclaringType == this.GetType()))
                                 {
-                                    returnValue = method.Invoke(this, parameters);
-                                }
-                                else
-                                {
-                                    method = this.GetType().GetMethods()
-                                        .Where(x => x.Name.Equals(methodName)
-                                            && x.GetParameters().Length == parameters.Length + 1
-                                            && x.DeclaringType == this.GetType())
-                                        .FirstOrDefault();
-                                    returnValue = method?.Invoke(this, parameters.Concat(new[]{ (object)string.Empty }).ToArray() );
+                                    if (method.GetParameters().Length - parameters.Length == 1)
+                                    {
+                                        method?.Invoke(this, parameters.Concat(new[]{(object)string.Empty}).ToArray());
+                                    } else 
+                                    if (parameters.Length - method.GetParameters().Length == 1)
+                                    {
+                                        method?.Invoke(this, parameters.Take(parameters.Length - 1).ToArray());
+                                    } else
+                                    if (parameters.Length == method.GetParameters().Length)
+                                    {
+                                        method?.Invoke(this, parameters);
+                                    }
                                 }
                             }
                             break;
