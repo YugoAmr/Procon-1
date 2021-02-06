@@ -1,0 +1,1 @@
+To add the dependencies of your plugin for compilation and loading, other than the standard ones, you need to copy the assembly files into a directory with a name that matches the name of the main class of your plugin. (For example: .\CChatGUIDStatsLogger\MySql.Data.dll)

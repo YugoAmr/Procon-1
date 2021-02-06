@@ -628,12 +628,50 @@ namespace PRoCon.Core.Plugin
             return CSharpParseOptions.Default.WithLanguageVersion(LanguageVersion.Latest);
         }
 
-        private IEnumerable<MetadataReference> GetCSharpCompilationReferences()
+        private IEnumerable<MetadataReference> GetCSharpCompilationReferences(string pluginClassName)
         {
             string dotnetRuntimePath = Path.Combine(Path.GetDirectoryName(typeof(object).Assembly.Location), "{0}.dll");
             string proconRuntimePath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "{0}.dll");
+            string pluginAssembliesPath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), 
+                "Plugins", "Assembly", pluginClassName);
+            string dotnetAssembliesList = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location),
+                "Plugins", "Assembly", "dotnetAssembly.cfg");
+            List<MetadataReference> assemblies = new List<MetadataReference>();
 
-            return new[]
+            if (Directory.Exists(pluginAssembliesPath))
+            {
+                var pluginsDirectoryInfo = new DirectoryInfo(pluginAssembliesPath);
+
+                foreach (FileInfo assemblyFile in pluginsDirectoryInfo.GetFiles("*.dll"))
+                {
+                    try
+                    {
+                        MetadataReference meta = MetadataReference.CreateFromFile(assemblyFile.FullName);
+                        assemblies.Add(meta);
+                    }
+                    catch (Exception e)
+                    {
+                        WritePluginConsole("Compiling {0}... ^1^bException in GetCSharpCompilationReferences", pluginClassName);
+                        WritePluginConsole(e.ToString());
+                    }
+                }
+
+                foreach (string item in GetDotnetAssembliesList(dotnetAssembliesList))
+                {
+                    try
+                    {
+                        MetadataReference meta = MetadataReference.CreateFromFile(item);
+                        assemblies.Add(meta);
+                    }
+                    catch (Exception e)
+                    {
+                        WritePluginConsole("Compiling {0}... ^1^bException in GetCSharpCompilationReferences", pluginClassName);
+                        WritePluginConsole(e.ToString());
+                    }
+                }
+            }
+
+            return (new[]
             {
                 MetadataReference.CreateFromFile(string.Format(dotnetRuntimePath, "mscorlib")),
                 MetadataReference.CreateFromFile(string.Format(dotnetRuntimePath, "System")),
@@ -641,14 +679,50 @@ namespace PRoCon.Core.Plugin
                 MetadataReference.CreateFromFile(string.Format(dotnetRuntimePath, "System.Data")),
                 MetadataReference.CreateFromFile(string.Format(dotnetRuntimePath, "System.Windows.Forms")),
                 MetadataReference.CreateFromFile(string.Format(dotnetRuntimePath, "System.Xml")),
-                MetadataReference.CreateFromFile(string.Format(dotnetRuntimePath, "System.ServiceModel")),
-                MetadataReference.CreateFromFile(string.Format(dotnetRuntimePath, "System.ServiceModel.Channels")),
-                MetadataReference.CreateFromFile(string.Format(dotnetRuntimePath, "System.ComponentModel")),
-                MetadataReference.CreateFromFile(string.Format(dotnetRuntimePath, "System.Xml.Linq")),
+                //MetadataReference.CreateFromFile(string.Format(dotnetRuntimePath, "System.ServiceModel")),
+                //MetadataReference.CreateFromFile(string.Format(dotnetRuntimePath, "System.ServiceModel.Channels")),
+                //MetadataReference.CreateFromFile(string.Format(dotnetRuntimePath, "System.ComponentModel")),
+                //MetadataReference.CreateFromFile(string.Format(dotnetRuntimePath, "System.Xml.Linq")),
 
                 MetadataReference.CreateFromFile(string.Format(proconRuntimePath, "MySql.Data")),
                 MetadataReference.CreateFromFile(string.Format(proconRuntimePath, "PRoCon.Core"))
-            };
+            }).Concat(assemblies);
+        }
+
+        private List<string> GetDotnetAssembliesList(string strAssembliesListFile)
+        {
+            string dotnetRuntimePath = Path.Combine(Path.GetDirectoryName(typeof(object).Assembly.Location), "{0}.dll");
+            List<string> list = new List<string>();
+
+            if (File.Exists(strAssembliesListFile))
+            {
+                try
+                {
+                    string[] a_strLines = File.ReadAllLines(strAssembliesListFile, Encoding.UTF8);
+
+                    foreach (string strLine in a_strLines)
+                    {
+
+                        List<string> lstWords = Packet.Wordify(strLine);
+
+                        if (lstWords.Count >= 2 && Regex.Match(strLine, "^[ ]*//.*").Success == false
+                            && String.Compare(lstWords[0], "procon.private.plugin.assembly", true) == 0)
+                        {
+                            if (File.Exists(string.Format(dotnetRuntimePath, lstWords[1])))
+                            {
+                                list.Add(string.Format(dotnetRuntimePath, lstWords[1]));
+                            }
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    WritePluginConsole("... ^1^bException in GetDotnetAssembliesList");
+                    WritePluginConsole(e.ToString());
+                }
+            }
+
+            return list;
         }
 
         private void PrintPluginResults(FileInfo pluginFile, EmitResult pluginResults)
@@ -783,7 +857,7 @@ namespace PRoCon.Core.Plugin
                         syntaxTrees.Add(CSharpSyntaxTree.ParseText(partialPluginSource, parseOptions, partialPluginFile.FullName, Encoding.UTF8));
                     }
 
-                    IEnumerable<MetadataReference> compilationReferences = this.GetCSharpCompilationReferences();
+                    IEnumerable<MetadataReference> compilationReferences = this.GetCSharpCompilationReferences(pluginClassName);
                     CSharpCompilation compilation = CSharpCompilation.Create(pluginClassName, syntaxTrees, compilationReferences, compilationOptions);
 
                     // 4.1. Now compile the plugin
@@ -951,11 +1025,39 @@ namespace PRoCon.Core.Plugin
                 hostEvidence.AddHost(new Zone(SecurityZone.MyComputer));
 
                 AppDomainSandbox = AppDomain.CreateDomain(ProconClient.HostName + ProconClient.Port + "Engine", hostEvidence, domainSetup, pluginSandboxPermissions, PluginManager.GetStrongName(AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(assembly => assembly.GetName().Name == "MySql.Data")));
-
                 WritePluginConsole("Configuring sandbox..");
+
                 // create the factory class in the secondary app-domain
                 PluginFactory = (CPRoConPluginLoaderFactory)AppDomainSandbox.CreateInstance("PRoCon.Core", "PRoCon.Core.Plugin.CPRoConPluginLoaderFactory").Unwrap();
                 PluginCallbacks = new CPRoConPluginCallbacks(ProconClient.ExecuteCommand, ProconClient.GetAccountPrivileges, ProconClient.GetVariable, ProconClient.GetSvVariable, ProconClient.GetMapDefines, ProconClient.TryGetLocalized, RegisterCommand, UnregisterCommand, GetRegisteredCommands, ProconClient.GetWeaponDefines, ProconClient.GetSpecializationDefines, ProconClient.Layer.GetLoggedInAccountUsernames, RegisterPluginEvents);
+
+                AppDomainSandbox.AssemblyResolve += delegate (object sender, ResolveEventArgs args)
+                {
+                    AppDomain dom = sender as AppDomain;
+                    AssemblyName assemblyName = new AssemblyName(args.Name);
+                    string assemblyPath = Path.GetFullPath(Path.Combine(dom.BaseDirectory, "..", "Assembly", Assembly.GetCallingAssembly().GetName().Name));
+
+                    if (Directory.Exists(assemblyPath))
+                    {
+                        assemblyName.CodeBase = Path.Combine(assemblyPath, $"{assemblyName.Name}.dll");
+                        //string assemblyFile = Path.Combine(assemblyPath, $"{assemblyName.Name}.dll");
+                        if (File.Exists(assemblyName.CodeBase))
+                        {
+                            try
+                            {
+                                //Assembly assembly = Assembly.LoadFile(assemblyFile);
+                                Assembly assembly = Assembly.Load(assemblyName);
+                                return assembly;
+                            }
+                            catch
+                            {
+                                return null;
+                            }
+                        }
+                    }
+
+                    return null;
+                };
 
                 WritePluginConsole("Compiling and loading plugins..");
 
