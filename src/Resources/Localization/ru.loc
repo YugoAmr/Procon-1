@@ -1560,7 +1560,7 @@ uscEvents.gpbCaptures.lnkAddCapture=Добав.
 uscEvents.gpbCaptures.btncleareventbox=Очистить список событий
 uscEvents.gpbCaptures.chkEventsEnableScrolling=Разрешить прокрутку списка
 
-uscEvents.lsvEvents.PlayerJoin={0} зашёл на сервер
+uscEvents.lsvEvents.PlayerJoin={0} зашёл на сервер, {1}
 uscEvents.lsvEvents.PlayerAuthenticated={0}
 uscEvents.lsvEvents.PlayerLeave={0} покинул сервер
 uscEvents.lsvEvents.PlayerDisconnected={0} отключен от сервера (Причина: {1})
