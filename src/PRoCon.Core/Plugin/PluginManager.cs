@@ -655,7 +655,10 @@ namespace PRoCon.Core.Plugin
                         WritePluginConsole(e.ToString());
                     }
                 }
+            }
 
+            if (File.Exists(dotnetAssembliesList))
+            {
                 foreach (string item in GetDotnetAssembliesList(dotnetAssembliesList))
                 {
                     try
@@ -694,32 +697,29 @@ namespace PRoCon.Core.Plugin
             string dotnetRuntimePath = Path.Combine(Path.GetDirectoryName(typeof(object).Assembly.Location), "{0}.dll");
             List<string> list = new List<string>();
 
-            if (File.Exists(strAssembliesListFile))
+            try
             {
-                try
+                string[] a_strLines = File.ReadAllLines(strAssembliesListFile, Encoding.UTF8);
+
+                foreach (string strLine in a_strLines)
                 {
-                    string[] a_strLines = File.ReadAllLines(strAssembliesListFile, Encoding.UTF8);
 
-                    foreach (string strLine in a_strLines)
+                    List<string> lstWords = Packet.Wordify(strLine);
+
+                    if (lstWords.Count >= 2 && Regex.Match(strLine, "^[ ]*//.*").Success == false
+                        && String.Compare(lstWords[0], "procon.private.plugin.assembly", true) == 0)
                     {
-
-                        List<string> lstWords = Packet.Wordify(strLine);
-
-                        if (lstWords.Count >= 2 && Regex.Match(strLine, "^[ ]*//.*").Success == false
-                            && String.Compare(lstWords[0], "procon.private.plugin.assembly", true) == 0)
+                        if (File.Exists(string.Format(dotnetRuntimePath, lstWords[1])))
                         {
-                            if (File.Exists(string.Format(dotnetRuntimePath, lstWords[1])))
-                            {
-                                list.Add(string.Format(dotnetRuntimePath, lstWords[1]));
-                            }
+                            list.Add(string.Format(dotnetRuntimePath, lstWords[1]));
                         }
                     }
                 }
-                catch (Exception e)
-                {
-                    WritePluginConsole("... ^1^bException in GetDotnetAssembliesList");
-                    WritePluginConsole(e.ToString());
-                }
+            }
+            catch (Exception e)
+            {
+                WritePluginConsole("... ^1^bException in GetDotnetAssembliesList");
+                WritePluginConsole(e.ToString());
             }
 
             return list;
