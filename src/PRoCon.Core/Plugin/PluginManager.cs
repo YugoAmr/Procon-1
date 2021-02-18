@@ -635,7 +635,7 @@ namespace PRoCon.Core.Plugin
             string pluginAssembliesPath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), 
                 "Plugins", "Assembly", pluginClassName);
             string dotnetAssembliesList = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location),
-                "Plugins", "Assembly", "dotnetAssembly.cfg");
+                "Plugins", "Assembly", $"{pluginClassName}.cfg");
             List<MetadataReference> assemblies = new List<MetadataReference>();
 
             if (Directory.Exists(pluginAssembliesPath))
@@ -821,15 +821,17 @@ namespace PRoCon.Core.Plugin
             bool requiresRecompiling = this.PluginCache.IsModified(pluginClassName, pluginSourceHash);
 
             String outputAssembly = Path.Combine(PluginBaseDirectory, pluginClassName + ".dll");
+            // checking output assembly file, if last compilation ends with errors then file is empty and plugin need recompiling
+            requiresRecompiling |= File.Exists(outputAssembly) && new FileInfo(outputAssembly)?.Length == 0;
             // we don't need the pdb or xml file if plugin debugging is disabled
             String pdbPath = this.ProconClient.Parent.OptionsSettings.EnablePluginDebugging ? Path.Combine(PluginBaseDirectory, pluginClassName + ".pdb") : null;
             String xmlDocPath = this.ProconClient.Parent.OptionsSettings.EnablePluginDebugging ? Path.Combine(PluginBaseDirectory, pluginClassName + ".xml") : null;
 
             // 2.1: check if plugin debugging is enabled, always force compilation if true
-            if (requiresRecompiling == true || File.Exists(outputAssembly) == false || this.ProconClient.Parent.OptionsSettings.EnablePluginDebugging == true)
+            if (requiresRecompiling || !File.Exists(outputAssembly) || this.ProconClient.Parent.OptionsSettings.EnablePluginDebugging)
             {
                 // 3. If a compiled plugin exists already, remove it now.
-                if (File.Exists(outputAssembly) == true)
+                if (File.Exists(outputAssembly))
                 {
                     try
                     {
