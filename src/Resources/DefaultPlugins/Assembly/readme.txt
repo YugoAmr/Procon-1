@@ -1,1 +1,3 @@
-To add the dependencies of your plugin for compilation and loading, other than the standard ones, you need to copy the assembly files into a directory with a name that matches the name of the main class of your plugin. (For example: .\CChatGUIDStatsLogger\MySql.Data.dll)
+To add your plugin dependencies for compilation and loading, you need:
+- for standard .net assemblies, such as "System.Xml.Linq", you need to create a file with the name of the plugin class and the extension ".cfg", and add the line "procon.private.plugin.assembly System.Xml.Linq" ;
+- for non-standard ones, copy the assemblies files to a directory with a name that match with the name of the main class of your plug-in (for example :. \ Plugins \ Assembly \ CChatGUIDStatsLogger \ MySql.Data.dll).
