@@ -1594,6 +1594,8 @@ uscPlayerListPanel.ctxPlayerOptions.spectatorListToolStripMenuItem=Zuschauerlist
 
 uscPlayerListPanel.ctxPlayerOptions.statsLookupToolStripMenuItem=Stats abfragen
 uscPlayerListPanel.ctxPlayerOptions.punkBusterScreenshotToolStripMenuItem=PB Screenshot anfordern
+uscPlayerListPanel.ctxPlayerOptions.copyToClipboardToolStripMenuItem=Kopieren ...
+uscPlayerListPanel.ctxPlayerOptions.copyNameToClipboardToolStripMenuItem=Name
 
 uscPlayerListPanel.ctxPlayerOptions.EndRound.Label=Wähle das Siegerteam zum Beenden der Runde:
 uscPlayerListPanel.ctxPlayerOptions.EndRound.Team1=Team 1

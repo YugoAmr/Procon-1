@@ -1637,6 +1637,8 @@ uscPlayerListPanel.ctxPlayerOptions.spectatorListToolStripMenuItem=Spectator Lis
 
 uscPlayerListPanel.ctxPlayerOptions.statsLookupToolStripMenuItem=Stats Lookup
 uscPlayerListPanel.ctxPlayerOptions.punkBusterScreenshotToolStripMenuItem=Trigger PB Screenshot
+uscPlayerListPanel.ctxPlayerOptions.copyToClipboardToolStripMenuItem=Copy ...
+uscPlayerListPanel.ctxPlayerOptions.copyNameToClipboardToolStripMenuItem=Name
 
 uscPlayerListPanel.ctxPlayerOptions.EndRound.Label=Select winning team to end round:
 uscPlayerListPanel.ctxPlayerOptions.EndRound.Team1=Team 1

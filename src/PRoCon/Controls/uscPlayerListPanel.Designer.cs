@@ -108,6 +108,9 @@
             this.colDeaths1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colKdr1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colPing1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colRank1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colTime1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colType1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lsvTeamTwoPlayers = new PRoCon.Controls.ControlsEx.ListViewNF();
             this.colSlotID2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colTags2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -119,6 +122,9 @@
             this.colDeaths2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colKdr2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colPing2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colRank2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colTime2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colType2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.spltBottomTwoSplit = new System.Windows.Forms.SplitContainer();
             this.lsvTeamThreePlayers = new PRoCon.Controls.ControlsEx.ListViewNF();
             this.colSlotID3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -131,6 +137,9 @@
             this.colDeaths3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colKdr3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colPing3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colRank3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colTime3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colType3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lsvTeamFourPlayers = new PRoCon.Controls.ControlsEx.ListViewNF();
             this.colSlotID4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colTags4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -142,6 +151,9 @@
             this.colDeaths4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colKdr4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colPing4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colRank4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colTime4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colType4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnSplitTeams = new System.Windows.Forms.Button();
             this.btnCloseAdditionalInfo = new System.Windows.Forms.Button();
             this.chkPlayerListShowTeams = new System.Windows.Forms.CheckBox();
@@ -160,9 +172,9 @@
             this.lblGUID = new System.Windows.Forms.Label();
             this.tbcCourtMartial = new System.Windows.Forms.TabControl();
             this.tabCourtMartialBFBC = new System.Windows.Forms.TabPage();
-            this.kbpBfbcPunishPanel = new uscPlayerPunishPanel();
+            this.kbpBfbcPunishPanel = new PRoCon.Controls.uscPlayerPunishPanel();
             this.tabCourtMartialPunkbuster = new System.Windows.Forms.TabPage();
-            this.kbpPunkbusterPunishPanel = new uscPlayerPunishPanel();
+            this.kbpPunkbusterPunishPanel = new PRoCon.Controls.uscPlayerPunishPanel();
             this.tmrKillDeathHighlight = new System.Windows.Forms.Timer(this.components);
             this.ctxPlayerOptions = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.moveToSquadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -187,30 +199,28 @@
             this.statsLookupToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.statsLookupToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.punkBusterScreenshotToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.colRank1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colRank2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colRank3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colRank4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colTime1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colTime2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colTime3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colTime4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colType1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colType2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colType3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colType4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.copyToClipboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyNameToClipboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyPBGuidToClipboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyIPToClipboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyEAGuidToClipboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            ((System.ComponentModel.ISupportInitialize)(this.spltListAdditionalInfo)).BeginInit();
             this.spltListAdditionalInfo.Panel1.SuspendLayout();
             this.spltListAdditionalInfo.Panel2.SuspendLayout();
             this.spltListAdditionalInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spltFourSplit)).BeginInit();
             this.spltFourSplit.Panel1.SuspendLayout();
             this.spltFourSplit.Panel2.SuspendLayout();
             this.spltFourSplit.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spltTwoSplit)).BeginInit();
             this.spltTwoSplit.Panel1.SuspendLayout();
             this.spltTwoSplit.Panel2.SuspendLayout();
             this.spltTwoSplit.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spltBottomTwoSplit)).BeginInit();
             this.spltBottomTwoSplit.Panel1.SuspendLayout();
             this.spltBottomTwoSplit.Panel2.SuspendLayout();
             this.spltBottomTwoSplit.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spltInfoPunish)).BeginInit();
             this.spltInfoPunish.Panel1.SuspendLayout();
             this.spltInfoPunish.Panel2.SuspendLayout();
             this.spltInfoPunish.SuspendLayout();
@@ -746,8 +756,9 @@
             // colTime3
             // 
             this.colTime3.Text = "PlayTime";
-            //
+            // 
             // colType3
+            // 
             this.colType3.Text = "Type";
             // 
             // lsvTeamFourPlayers
@@ -1156,11 +1167,12 @@
             this.spectatorListToolStripMenuItem,
             this.toolStripMenuItem2,
             this.statsLookupToolStripMenuItem,
-            this.punkBusterScreenshotToolStripMenuItem});
+            this.punkBusterScreenshotToolStripMenuItem,
+            this.copyToClipboardToolStripMenuItem});
             this.ctxPlayerOptions.Name = "ctxPlayerOptions";
             this.ctxPlayerOptions.ShowCheckMargin = true;
             this.ctxPlayerOptions.ShowImageMargin = false;
-            this.ctxPlayerOptions.Size = new System.Drawing.Size(196, 120);
+            this.ctxPlayerOptions.Size = new System.Drawing.Size(196, 164);
             // 
             // moveToSquadToolStripMenuItem
             // 
@@ -1290,25 +1302,25 @@
             // statsLookupToolStripMenuItem1
             // 
             this.statsLookupToolStripMenuItem1.Name = "statsLookupToolStripMenuItem1";
-            this.statsLookupToolStripMenuItem1.Size = new System.Drawing.Size(127, 22);
+            this.statsLookupToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.statsLookupToolStripMenuItem1.Text = "Metabans";
             // 
             // statsLookupToolStripMenuItem2
             // 
             this.statsLookupToolStripMenuItem2.Name = "statsLookupToolStripMenuItem2";
-            this.statsLookupToolStripMenuItem2.Size = new System.Drawing.Size(127, 22);
+            this.statsLookupToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
             this.statsLookupToolStripMenuItem2.Text = "Custom-2";
             // 
             // statsLookupToolStripMenuItem3
             // 
             this.statsLookupToolStripMenuItem3.Name = "statsLookupToolStripMenuItem3";
-            this.statsLookupToolStripMenuItem3.Size = new System.Drawing.Size(127, 22);
+            this.statsLookupToolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
             this.statsLookupToolStripMenuItem3.Text = "Custum-3";
             // 
             // statsLookupToolStripMenuItem4
             // 
             this.statsLookupToolStripMenuItem4.Name = "statsLookupToolStripMenuItem4";
-            this.statsLookupToolStripMenuItem4.Size = new System.Drawing.Size(127, 22);
+            this.statsLookupToolStripMenuItem4.Size = new System.Drawing.Size(180, 22);
             this.statsLookupToolStripMenuItem4.Text = "Custom-4";
             // 
             // punkBusterScreenshotToolStripMenuItem
@@ -1317,6 +1329,45 @@
             this.punkBusterScreenshotToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
             this.punkBusterScreenshotToolStripMenuItem.Text = "PunkBuster Screenshot";
             this.punkBusterScreenshotToolStripMenuItem.Click += new System.EventHandler(this.punkBusterScreenshotToolStripMenuItem_Click);
+            // 
+            // copyToClipboardToolStripMenuItem
+            // 
+            this.copyToClipboardToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyNameToClipboardToolStripMenuItem,
+            this.copyPBGuidToClipboardToolStripMenuItem,
+            this.copyIPToClipboardToolStripMenuItem,
+            this.copyEAGuidToClipboardToolStripMenuItem});
+            this.copyToClipboardToolStripMenuItem.Name = "copyToClipboardToolStripMenuItem";
+            this.copyToClipboardToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.copyToClipboardToolStripMenuItem.Text = "Copy to clipboard..";
+            // 
+            // copyNameToClipboardToolStripMenuItem
+            // 
+            this.copyNameToClipboardToolStripMenuItem.Name = "copyNameToClipboardToolStripMenuItem";
+            this.copyNameToClipboardToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.copyNameToClipboardToolStripMenuItem.Text = "Name";
+            this.copyNameToClipboardToolStripMenuItem.Click += new System.EventHandler(this.copyToClipboardToolStripMenuItem_Click);
+            // 
+            // copyPBGuidToClipboardToolStripMenuItem
+            // 
+            this.copyPBGuidToClipboardToolStripMenuItem.Name = "copyPBGuidToClipboardToolStripMenuItem";
+            this.copyPBGuidToClipboardToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.copyPBGuidToClipboardToolStripMenuItem.Text = "PB Guid";
+            this.copyPBGuidToClipboardToolStripMenuItem.Click += new System.EventHandler(this.copyToClipboardToolStripMenuItem_Click);
+            // 
+            // copyIPToClipboardToolStripMenuItem
+            // 
+            this.copyIPToClipboardToolStripMenuItem.Name = "copyIPToClipboardToolStripMenuItem";
+            this.copyIPToClipboardToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.copyIPToClipboardToolStripMenuItem.Text = "IP";
+            this.copyIPToClipboardToolStripMenuItem.Click += new System.EventHandler(this.copyToClipboardToolStripMenuItem_Click);
+            // 
+            // copyEAGuidToClipboardToolStripMenuItem
+            // 
+            this.copyEAGuidToClipboardToolStripMenuItem.Name = "copyEAGuidToClipboardToolStripMenuItem";
+            this.copyEAGuidToClipboardToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.copyEAGuidToClipboardToolStripMenuItem.Text = "EA Guid";
+            this.copyEAGuidToClipboardToolStripMenuItem.Click += new System.EventHandler(this.copyToClipboardToolStripMenuItem_Click);
             // 
             // uscPlayerListPanel
             // 
@@ -1332,18 +1383,23 @@
             this.spltListAdditionalInfo.Panel1.ResumeLayout(false);
             this.spltListAdditionalInfo.Panel1.PerformLayout();
             this.spltListAdditionalInfo.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.spltListAdditionalInfo)).EndInit();
             this.spltListAdditionalInfo.ResumeLayout(false);
             this.spltFourSplit.Panel1.ResumeLayout(false);
             this.spltFourSplit.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.spltFourSplit)).EndInit();
             this.spltFourSplit.ResumeLayout(false);
             this.spltTwoSplit.Panel1.ResumeLayout(false);
             this.spltTwoSplit.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.spltTwoSplit)).EndInit();
             this.spltTwoSplit.ResumeLayout(false);
             this.spltBottomTwoSplit.Panel1.ResumeLayout(false);
             this.spltBottomTwoSplit.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.spltBottomTwoSplit)).EndInit();
             this.spltBottomTwoSplit.ResumeLayout(false);
             this.spltInfoPunish.Panel1.ResumeLayout(false);
             this.spltInfoPunish.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.spltInfoPunish)).EndInit();
             this.spltInfoPunish.ResumeLayout(false);
             this.pnlAdditionalInfo.ResumeLayout(false);
             this.pnlAdditionalInfo.PerformLayout();
@@ -1463,5 +1519,10 @@
         private System.Windows.Forms.ToolStripMenuItem statsLookupToolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem punkBusterScreenshotToolStripMenuItem;
         private System.Windows.Forms.ComboBox cboEndRound;
+        private System.Windows.Forms.ToolStripMenuItem copyToClipboardToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copyNameToClipboardToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copyPBGuidToClipboardToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copyIPToClipboardToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copyEAGuidToClipboardToolStripMenuItem;
     }
 }

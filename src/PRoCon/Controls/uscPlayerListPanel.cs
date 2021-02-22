@@ -2343,6 +2343,15 @@ namespace PRoCon.Controls
                     this.spectatorListToolStripMenuItem.Checked = this.Client.SpectatorList.Contains(player.SoldierName);
                     this.spectatorListToolStripMenuItem.Tag = player;
 
+                    copyToClipboardToolStripMenuItem.Text = this.Language.GetDefaultLocalized("Copy ...", "uscPlayerListPanel.ctxPlayerOptions.copyToClipboardToolStripMenuItem", null); ;
+                    copyToClipboardToolStripMenuItem.Tag = (AdditionalPlayerInfo)lviSelected.Tag;
+
+                    copyNameToClipboardToolStripMenuItem.Text = this.Language.GetDefaultLocalized("Name", "uscPlayerListPanel.ctxPlayerOptions.copyNameToClipboardToolStripMenuItem", null); ;
+                    copyNameToClipboardToolStripMenuItem.Enabled = !string.IsNullOrEmpty(player.SoldierName);
+                    copyPBGuidToClipboardToolStripMenuItem.Enabled = !string.IsNullOrEmpty(((AdditionalPlayerInfo)lviSelected.Tag).Punkbuster?.GUID);
+                    copyEAGuidToClipboardToolStripMenuItem.Enabled = !string.IsNullOrEmpty(player.GUID);
+                    copyIPToClipboardToolStripMenuItem.Enabled = !string.IsNullOrEmpty(((AdditionalPlayerInfo)lviSelected.Tag).Punkbuster?.Ip);
+
                     if (this.Client.FullTextChatModerationList.Contains(player.SoldierName) == true)
                     {
 
@@ -2614,6 +2623,59 @@ namespace PRoCon.Controls
             {
                 // ((CPunkbusterInfo)this.punkBusterScreenshotToolStripMenuItem.Tag).SlotID
                 this.Client.SendRequest(new List<string>() { "punkBuster.pb_sv_command", "pb_sv_getss " + ((CPunkbusterInfo)this.punkBusterScreenshotToolStripMenuItem.Tag).SlotID });
+            }
+        }
+
+        private void copyToClipboardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (copyToClipboardToolStripMenuItem.Tag != null && copyToClipboardToolStripMenuItem.Tag is AdditionalPlayerInfo)
+            {
+                AdditionalPlayerInfo additionalPlayerInfo = copyToClipboardToolStripMenuItem.Tag as AdditionalPlayerInfo;
+                if (sender == copyNameToClipboardToolStripMenuItem && additionalPlayerInfo.Player != null)
+                {
+                    try
+                    {
+                        Clipboard.SetDataObject(additionalPlayerInfo.Player.SoldierName, true, 5, 10);
+                    }
+                    catch (Exception)
+                    {
+                        // Nope, another thread is accessing the clipboard..
+                    }
+                }
+                else if (sender == copyEAGuidToClipboardToolStripMenuItem && additionalPlayerInfo.Player != null)
+                {
+                    try
+                    {
+                        Clipboard.SetDataObject(additionalPlayerInfo.Player.GUID, true, 5, 10);
+                    }
+                    catch (Exception)
+                    {
+                        // Nope, another thread is accessing the clipboard..
+                    }
+                }
+                else if (sender == copyPBGuidToClipboardToolStripMenuItem && additionalPlayerInfo.Punkbuster != null)
+                {
+                    try
+                    {
+                        Clipboard.SetDataObject(additionalPlayerInfo.Punkbuster.GUID, true, 5, 10);
+                    }
+                    catch (Exception)
+                    {
+                        // Nope, another thread is accessing the clipboard..
+                    }
+                }
+                else if (sender == copyIPToClipboardToolStripMenuItem && additionalPlayerInfo.Punkbuster != null)
+                {
+                    try
+                    {
+                        string ip = additionalPlayerInfo.Punkbuster.Ip;
+                        Clipboard.SetDataObject(ip.Substring(0,ip.IndexOf(':')), true, 5, 10);
+                    }
+                    catch (Exception)
+                    {
+                        // Nope, another thread is accessing the clipboard..
+                    }
+                }
             }
         }
 

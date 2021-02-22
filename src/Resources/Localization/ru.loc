@@ -1420,6 +1420,8 @@ uscPlayerListPanel.ctxPlayerOptions.spectatorListToolStripMenuItem=Слот на
 
 uscPlayerListPanel.ctxPlayerOptions.statsLookupToolStripMenuItem=Посмотреть статистику
 uscPlayerListPanel.ctxPlayerOptions.punkBusterScreenshotToolStripMenuItem=Сделать PB скриншот
+uscPlayerListPanel.ctxPlayerOptions.copyToClipboardToolStripMenuItem=Копировать ...
+uscPlayerListPanel.ctxPlayerOptions.copyNameToClipboardToolStripMenuItem=Имя
 
 uscPlayerListPanel.ctxPlayerOptions.EndRound.Label=Выберите команду-победителя, чтобы закончить раунд:
 uscPlayerListPanel.ctxPlayerOptions.EndRound.Team1=Команда 1
