@@ -98,11 +98,11 @@ namespace PRoCon.Controls
         /// </summary>
         protected bool PlaceHoldersDrawn { get; set; }
 
-        /// <summary>
+/*        /// <summary>
         /// A list of procon developer uids for highlighting in the player panel
         /// </summary>
         protected List<String> DeveloperUids { get; private set; }
-
+        
         /// <summary>
         /// A list of procon staff uids for highlighting in the player panel
         /// </summary>
@@ -112,7 +112,7 @@ namespace PRoCon.Controls
         /// A list of procon plugin developer uids for highlighting in the player panel
         /// </summary>
         protected List<String> PluginDeveloperUids { get; private set; }
-
+*/
         public uscPlayerListPanel()
         {
             InitializeComponent();
@@ -131,9 +131,9 @@ namespace PRoCon.Controls
             this.spltTwoSplit.Panel2Collapsed = true;
             this.spltFourSplit.Panel2Collapsed = true;
 
-            this.DeveloperUids = new List<string>();
-            this.StaffUids = new List<string>();
-            this.PluginDeveloperUids = new List<string>();
+            //this.DeveloperUids = new List<string>();
+            //this.StaffUids = new List<string>();
+            //this.PluginDeveloperUids = new List<string>();
         }
 
         protected void SetSplitterDistances()
@@ -221,8 +221,6 @@ namespace PRoCon.Controls
             this.btnSplitTeams.ImageKey = @"application_tile_horizontal.png";
 
             this.cboEndRound.SelectedIndex = 0;
-
-            this.updateDeveloperUids();
         }
 
         // If we disconnect clear the player list so it's fresh on reconnection.
@@ -1208,7 +1206,7 @@ namespace PRoCon.Controls
 
                             if (String.IsNullOrEmpty(cpiPlayer.GUID) == false)
                             {
-                                if (this.DeveloperUids.Contains(cpiPlayer.GUID.ToLowerInvariant()))
+                                /*if (this.DeveloperUids.Contains(cpiPlayer.GUID.ToLowerInvariant()))
                                 {
                                     playerListItem.ForeColor = Color.CornflowerBlue;
                                     playerListItem.SubItems["type"].Text = this.Language.GetDefaultLocalized("Procon Developer", "uscPlayerListPanel.lsvPlayers.Type.Developer", null);
@@ -1222,6 +1220,23 @@ namespace PRoCon.Controls
                                 {
                                     playerListItem.ForeColor = Color.LightSkyBlue;
                                     playerListItem.SubItems["type"].Text = this.Language.GetDefaultLocalized("Plugin Developer", "uscPlayerListPanel.lsvPlayers.Type.PluginDeveloper", null);
+                                }*/
+                                if (Program.ProconApplication.AccountsList?.Where(x => x.Name.Equals(cpiPlayer.SoldierName)).FirstOrDefault() != null)
+                                {
+                                    // reserver slot players are colored in player list panel
+                                    playerListItem.ForeColor = Color.Tomato;
+                                    playerListItem.SubItems["type"].Text = this.Language.GetDefaultLocalized("Administrator", "uscPlayerListPanel.lsvPlayers.Type.Administrator", null);
+                                }
+                                else if (this.Client.ReservedSlotList.Contains(cpiPlayer.SoldierName))
+                                {
+                                    //playerListItem.ForeColor = Color.FromArgb(0, 200, 200);
+                                    playerListItem.ForeColor = Color.DarkTurquoise;
+                                    playerListItem.SubItems["type"].Text = this.Language.GetDefaultLocalized("Reserved", "uscPlayerListPanel.lsvPlayers.Type.Reserved", null);
+                                }
+                                else if (playerListItem.ForeColor != SystemColors.WindowText)
+                                {
+                                    // reserver slot players are colored in player list panel
+                                    playerListItem.ForeColor = SystemColors.WindowText;
                                 }
                             }
 
@@ -2770,62 +2785,5 @@ namespace PRoCon.Controls
         }
 
         #endregion
-
-        private void updateDeveloperUids()
-        {
-            ThreadPool.QueueUserWorkItem(delegate
-            {
-                try
-                {
-                    XmlDocument document = new XmlDocument();
-                    document.Load("https://myrcon.com/procon/streams/developers/format/xml");
-
-                    foreach (XmlElement developer in document.GetElementsByTagName("developer"))
-                    {
-                        XmlNodeList developerUids = developer.GetElementsByTagName("ea_guid");
-
-                        if (developerUids.Count > 0)
-                        {
-                            XmlNode developerUid = developerUids.Item(0);
-
-                            XmlNodeList developerTypes = developer.GetElementsByTagName("type");
-                            if (developerTypes.Count > 0)
-                            {
-                                XmlNode developerType = developerTypes.Item(0);
-
-                                if (developerType != null && developerType.InnerText.Length > 0)
-                                {
-                                    switch (developerType.InnerText)
-                                    {
-                                        case "developer":
-                                            if (developerUid != null && developerUid.InnerText.Length > 0 && this.DeveloperUids.Contains(developerUid.InnerText) == false)
-                                            {
-                                                this.DeveloperUids.Add(developerUid.InnerText);
-                                            }
-                                            break;
-                                        case "staff":
-                                            if (developerUid != null && developerUid.InnerText.Length > 0 && this.StaffUids.Contains(developerUid.InnerText) == false)
-                                            {
-                                                this.StaffUids.Add(developerUid.InnerText);
-                                            }
-                                            break;
-                                        case "plugindeveloper":
-                                            if (developerUid != null && developerUid.InnerText.Length > 0 && this.PluginDeveloperUids.Contains(developerUid.InnerText) == false)
-                                            {
-                                                this.PluginDeveloperUids.Add(developerUid.InnerText);
-                                            }
-                                            break;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                catch (Exception e)
-                {
-
-                }
-            });
-        }
     }
 }

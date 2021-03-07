@@ -1197,6 +1197,7 @@ frmOptions.tabAdvanced2=Дополнительно-2
 frmOptions.lblAdv2BanTab=Баны
 frmOptions.tabBasics.chkAdv2EnableAdminReason=Отображать имя админестратора в причине кика/бана и т.д
 frmOptions.tabBasics.chkAdv2IncludeTimeReason=Добавлять продолжительность в причину временного бана.
+frmOptions.tabBasics.chkAdv2UseGeoIPFile=Использовать файл GeoIP.dat для определения страны
 
 frmOptions.tabPlayerLookup=Stats-Ссылки
 frmOptions.tabPlayerLookup.colStatsLinksName=Имя
@@ -1399,6 +1400,8 @@ uscPlayerListPanel.lsvPlayers.Type.CommanderTablet=Командир (Планш�
 uscPlayerListPanel.lsvPlayers.Type.Developer=Разработчик Procon
 uscPlayerListPanel.lsvPlayers.Type.Staff=Myrcon Staff
 uscPlayerListPanel.lsvPlayers.Type.PluginDeveloper=Разработчик плагина
+uscPlayerListPanel.lsvPlayers.Type.Administrator=Администратор
+uscPlayerListPanel.lsvPlayers.Type.Reserved=ВИП слот
 
 // Cheese button takes a pb_sv_ss of the selected player.  This is hidden for now but will appear shortly in a later version.
 uscPlayerListPanel.btnPlayerListSelectedCheese=Скриншот

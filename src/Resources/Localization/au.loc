@@ -1414,6 +1414,7 @@ frmOptions.tabAdvanced2=Advanced-2
 frmOptions.lblAdv2BanTab=Bans
 frmOptions.tabBasics.chkAdv2EnableAdminReason=Enable Admin name in ban reason
 frmOptions.tabBasics.chkAdv2IncludeTimeReason=Include time period in tban reason
+frmOptions.tabBasics.chkAdv2UseGeoIPFile=Use GeoIp.dat file only
 
 frmOptions.tabPlayerLookup=Stats-Links
 frmOptions.tabPlayerLookup.colStatsLinksName=Name
@@ -1616,6 +1617,8 @@ uscPlayerListPanel.lsvPlayers.Type.CommanderTablet=Commander (Tablet)
 uscPlayerListPanel.lsvPlayers.Type.Developer=Procon Developer
 uscPlayerListPanel.lsvPlayers.Type.Staff=Myrcon Staff
 uscPlayerListPanel.lsvPlayers.Type.PluginDeveloper=Plugin Developer
+uscPlayerListPanel.lsvPlayers.Type.Administrator=Administrator
+uscPlayerListPanel.lsvPlayers.Type.Reserved=Reserved
 
 // Cheese button takes a pb_sv_ss of the selected player.  This is hidden for now but will appear shortly in a later version.
 uscPlayerListPanel.btnPlayerListSelectedCheese=Cheese

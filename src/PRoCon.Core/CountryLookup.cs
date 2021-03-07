@@ -17,18 +17,31 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
+using PRoCon.Core;
+using PRoCon.Core.Options;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
-
+using System.Reflection;
 
 namespace MaxMind
 {
+    public class PIP
+    {
+        public string IP_Address { get; set; }
+        public string CountryCode { get; set; }
+        public string CountryName { get; set; }
+    }
+
     /// <summary>
     /// Summary description for CountryLookup.
     /// </summary>
     public class CountryLookup
     {
+        private Dictionary<string, PIP> IPs = new Dictionary<string, PIP>();
+
         private FileStream fileInput;
         private static long COUNTRY_BEGIN = 16776960;
         private static string[] countryCode =
@@ -59,7 +72,7 @@ namespace MaxMind
             {
                 fileInput = new FileStream(fileName, FileMode.Open, FileAccess.Read);
             }
-            catch (FileNotFoundException e)
+            catch
             {
                 Console.WriteLine("File " + fileName + " not found.");
             }
@@ -72,11 +85,25 @@ namespace MaxMind
             {
                 addr = IPAddress.Parse(str);
             }
-            catch (FormatException e)
+            catch
             {
                 return "--";
             }
             return lookupCountryCode(addr);
+        }
+        
+        public string lookupCountryCodeGeoIpFile(string str)
+        {
+            IPAddress addr;
+            try
+            {
+                addr = IPAddress.Parse(str);
+            }
+            catch
+            {
+                return "--";
+            }
+            return lookupCountryCodeGeoIpFile(addr);
         }
 
         private long addrToNum(IPAddress addr)
@@ -96,9 +123,64 @@ namespace MaxMind
             return ipnum;
         }
 
+        public PIP ProxyCheckRequest(IPAddress addr)
+        {
+            using (WebClient client = new WebClient())
+            {
+                //manipulate request headers (optional)
+                client.Headers.Add(HttpRequestHeader.UserAgent, "Procon/" + Assembly.GetExecutingAssembly().GetName().Version.ToString());
+
+                //execute request and read response as string to console
+                using (StreamReader reader = new StreamReader(client.OpenRead("https://api.myrcon.net/proxycheck/" + addr.ToString())))
+                {
+                    string s = reader.ReadToEnd();
+                    Hashtable a = (Hashtable)JSON.JsonDecode(s);
+
+                    PIP apipc = new PIP()
+                    {
+                        CountryCode = ((Hashtable)a[addr.ToString()])["isocode"].ToString(),
+                        CountryName = ((Hashtable)a[addr.ToString()])["country"].ToString(),
+                        IP_Address = addr.ToString()
+                    };
+
+                    IPs.Add(addr.ToString(), apipc);
+
+                    return IPs[addr.ToString()];
+                }
+            }
+        }
+
         public string lookupCountryCode(IPAddress addr)
         {
-            return (countryCode[(int)seekCountry(0, addrToNum(addr), 31)]);
+            if (!IPs.ContainsKey(addr.ToString()))
+            {
+                try
+                {
+                    if (this.OptionsSettings.UseGeoIpFileOnly == true)
+                    {
+                        return lookupCountryCodeGeoIpFile(addr);
+                    }
+                    
+                    return ProxyCheckRequest(addr).CountryCode;
+                }
+                catch (Exception)
+                {
+                    // If that fails, fall back to the outdated stuff.
+                    return (countryCode[(int)seekCountry(0, addrToNum(addr), 31)]);
+                }
+            }
+
+            return IPs[addr.ToString()].CountryCode;
+        }
+
+        public string lookupCountryCodeGeoIpFile(IPAddress addr)
+        {
+            if (!IPs.ContainsKey(addr.ToString()))
+            {
+                return (countryCode[(int)seekCountry(0, addrToNum(addr), 31)]);
+            }
+
+            return IPs[addr.ToString()].CountryCode;
         }
 
         public string lookupCountryName(string str)
@@ -115,9 +197,57 @@ namespace MaxMind
             return lookupCountryName(addr);
         }
 
+        public string lookupCountryNameGeoIpFile(string str)
+        {
+            IPAddress addr;
+            try
+            {
+                addr = IPAddress.Parse(str);
+            }
+            catch (FormatException)
+            {
+                return "N/A";
+            }
+            return lookupCountryNameGeoIpFile(addr);
+        }
+
+        public OptionsSettings OptionsSettings
+        {
+            get;
+            private set;
+        }
+
         public string lookupCountryName(IPAddress addr)
         {
-            return (countryName[(int)seekCountry(0, addrToNum(addr), 31)]);
+            if (!IPs.ContainsKey(addr.ToString()))
+            {
+                try
+                {
+                    if (this.OptionsSettings.UseGeoIpFileOnly == true)
+                    {
+                        return lookupCountryNameGeoIpFile(addr);
+                    }
+
+                    return ProxyCheckRequest(addr).CountryName;
+                }
+                catch (Exception)
+                {
+                    // If that fails, fall back to the outdated stuff.
+                    return (countryName[(int)seekCountry(0, addrToNum(addr), 31)]);
+                }
+            }
+
+            return IPs[addr.ToString()].CountryName;
+        }
+
+        public string lookupCountryNameGeoIpFile(IPAddress addr)
+        {
+            if (!IPs.ContainsKey(addr.ToString()))
+            {
+                return (countryName[(int)seekCountry(0, addrToNum(addr), 31)]);
+            }
+
+            return IPs[addr.ToString()].CountryName;
         }
 
         private long seekCountry(long offset, long ipnum, int depth)
@@ -134,7 +264,7 @@ namespace MaxMind
                 fileInput.Seek(6 * offset, 0);
                 fileInput.Read(buf, 0, 6);
             }
-            catch (IOException e)
+            catch
             {
                 Console.WriteLine("IO Exception");
             }

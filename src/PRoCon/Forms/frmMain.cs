@@ -378,7 +378,8 @@ namespace PRoCon.Forms
         private void changelogToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //System.Diagnostics.Process.Start("http://phogue.net/procon/changelog.php");
-            System.Diagnostics.Process.Start("https://repo.myrcon.com/procon1/changelog.php");
+            //System.Diagnostics.Process.Start("https://repo.myrcon.com/procon1/changelog.php");
+            System.Diagnostics.Process.Start("https://github.com/YugoAmr/Procon-1/commits/master");
 
         }
 

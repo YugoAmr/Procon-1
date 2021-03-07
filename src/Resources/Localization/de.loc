@@ -1371,6 +1371,8 @@ frmOptions.tabAdvanced.lblAdvSpecialSwitches.lblAdvShowDICESpecialOptionsNotice=
 frmOptions.tabAdvanced2=Erweitert-2
 frmOptions.lblAdv2BanTab=Sperrungen
 frmOptions.tabBasics.chkAdv2EnableAdminReason=Admin-Namen in der Begründung anzeigen
+frmOptions.tabBasics.chkAdv2IncludeTimeReason=Fügen Sie einen Zeitraum in tban Grund
+frmOptions.tabBasics.chkAdv2UseGeoIPFile=Verwenden GeoIp.dat Datei nur
 
 frmOptions.tabPlayerLookup=Stats-Links
 frmOptions.tabPlayerLookup.colStatsLinksName=Name
@@ -1573,6 +1575,8 @@ uscPlayerListPanel.lsvPlayers.Type.CommanderTablet=Kommander (Tablet)
 uscPlayerListPanel.lsvPlayers.Type.Developer=Procon Entwickler
 uscPlayerListPanel.lsvPlayers.Type.Staff=Myrcon Mitarbeiter
 uscPlayerListPanel.lsvPlayers.Type.PluginDeveloper=Plugin Entwickler
+uscPlayerListPanel.lsvPlayers.Type.Administrator=Administrator
+uscPlayerListPanel.lsvPlayers.Type.Reserved=Reservierter
 
 // Käse Button führt ein pb_sv_ss der ausgewählten Spieler. Dies ist nun ausgeblendet, jedoch wird in Kürze in einer späteren Version erscheinen.
 uscPlayerListPanel.btnPlayerListSelectedCheese=Lächeln

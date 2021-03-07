@@ -87,7 +87,8 @@ namespace PRoCon.Forms
             this.m_praApplication.OptionsSettings.ChatDisplayAdminNameChanged += new PRoCon.Core.Options.OptionsSettings.OptionsEnabledHandler(OptionsSettings_ChatDisplayAdminNameChanged);
             this.m_praApplication.OptionsSettings.EnableAdminReasonChanged += new PRoCon.Core.Options.OptionsSettings.OptionsEnabledHandler(OptionsSettings_EnableAdminReasonChanged);
             this.m_praApplication.OptionsSettings.IncludeTimeReasonChanged += new PRoCon.Core.Options.OptionsSettings.OptionsEnabledHandler(OptionsSettings_IncludeTimeReasonChanged);
-            
+            this.m_praApplication.OptionsSettings.UseGeoIpFileOnlyChanged += new PRoCon.Core.Options.OptionsSettings.OptionsEnabledHandler(OptionsSettings_UseGeoIPFileChanged);
+
             this.m_praApplication.OptionsSettings.LayerHideLocalAccountsChanged += new OptionsSettings.OptionsEnabledHandler(OptionsSettings_LayerHideLocalAccountsChanged);
             this.m_praApplication.OptionsSettings.LayerHideLocalPluginsChanged += new OptionsSettings.OptionsEnabledHandler(OptionsSettings_LayerHideLocalPluginsChanged);
 
@@ -168,6 +169,8 @@ namespace PRoCon.Forms
                 this.m_praApplication.OptionsSettings.ChatDisplayAdminName = this.m_praApplication.OptionsSettings.ChatDisplayAdminName;
                 this.m_praApplication.OptionsSettings.EnableAdminReason = this.m_praApplication.OptionsSettings.EnableAdminReason;
                 this.m_praApplication.OptionsSettings.IncludeTimeReason = this.m_praApplication.OptionsSettings.IncludeTimeReason;
+
+                this.m_praApplication.OptionsSettings.UseGeoIpFileOnly = this.m_praApplication.OptionsSettings.UseGeoIpFileOnly;
 
                 this.m_praApplication.OptionsSettings.LayerHideLocalAccounts = this.m_praApplication.OptionsSettings.LayerHideLocalAccounts;
                 this.m_praApplication.OptionsSettings.LayerHideLocalPlugins = this.m_praApplication.OptionsSettings.LayerHideLocalPlugins;
@@ -296,7 +299,8 @@ namespace PRoCon.Forms
             this.lblAdv2BanTab.Text = clocLanguage.GetDefaultLocalized("Bans", "frmOptions.lblAdv2BanTab");
             this.chkAdv2EnableAdminReason.Text = clocLanguage.GetDefaultLocalized("Enable Admin name in ban reason", "frmOptions.tabBasics.chkAdv2EnableAdminReason");
             this.chkAdv2IncludeTimeReason.Text = clocLanguage.GetDefaultLocalized("Include time period in tban reason", "frmOptions.tabBasics.chkAdv2IncludeTimeReason");
-            
+            this.chkAdv2UseGeoIPFile.Text = clocLanguage.GetDefaultLocalized("Use GeoIp file only", "frmOptions.tabBasics.chkAdv2UseGeoIPFile");
+
             // StatsLinks
             this.tabPlayerLookup.Text = clocLanguage.GetLocalized("frmOptions.tabPlayerLookup");
             this.lblStatsPlayerTab.Text = clocLanguage.GetLocalized("frmOptions.tabAdvanced.lblAdvPlayerTab");
@@ -912,6 +916,16 @@ namespace PRoCon.Forms
         private void chkAdv2EnableAdminReason_CheckedChanged(object sender, EventArgs e)
         {
             this.m_praApplication.OptionsSettings.EnableAdminReason = this.chkAdv2EnableAdminReason.Checked;
+        }
+
+        void OptionsSettings_UseGeoIPFileChanged(bool blEnabled)
+        {
+            this.chkAdv2UseGeoIPFile.Checked = blEnabled;
+        }
+
+        private void chkAdv2UseGeoIPFile_CheckedChanged(object sender, EventArgs e)
+        {
+            this.m_praApplication.OptionsSettings.UseGeoIpFileOnly = this.chkAdv2UseGeoIPFile.Checked;
         }
 
         void OptionsSettings_IncludeTimeReasonChanged(bool blEnabled)

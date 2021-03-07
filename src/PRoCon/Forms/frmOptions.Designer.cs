@@ -143,6 +143,9 @@
             this.lblStatsPlayerTab = new System.Windows.Forms.Label();
             this.panel15 = new System.Windows.Forms.Panel();
             this.btnClose = new System.Windows.Forms.Button();
+            this.panel20 = new System.Windows.Forms.Panel();
+            this.lblAdv2GeoIPTab = new System.Windows.Forms.Label();
+            this.chkAdv2UseGeoIPFile = new System.Windows.Forms.CheckBox();
             this.tbcOptions.SuspendLayout();
             this.tabBasics.SuspendLayout();
             this.tabPlugins.SuspendLayout();
@@ -1308,6 +1311,9 @@
             // 
             // tabAdv2
             // 
+            this.tabAdv2.Controls.Add(this.chkAdv2UseGeoIPFile);
+            this.tabAdv2.Controls.Add(this.lblAdv2GeoIPTab);
+            this.tabAdv2.Controls.Add(this.panel20);
             this.tabAdv2.Controls.Add(this.chkAdv2IncludeTimeReason);
             this.tabAdv2.Controls.Add(this.chkAdv2EnableAdminReason);
             this.tabAdv2.Controls.Add(this.lblAdv2BanTab);
@@ -1516,6 +1522,37 @@
             this.btnClose.TabIndex = 25;
             this.btnClose.Text = "Close";
             // 
+            // panel20
+            // 
+            this.panel20.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel20.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel20.Location = new System.Drawing.Point(20, 109);
+            this.panel20.Name = "panel20";
+            this.panel20.Size = new System.Drawing.Size(355, 1);
+            this.panel20.TabIndex = 20;
+            // 
+            // lblAdv2GeoIPTab
+            // 
+            this.lblAdv2GeoIPTab.AutoSize = true;
+            this.lblAdv2GeoIPTab.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAdv2GeoIPTab.Location = new System.Drawing.Point(17, 100);
+            this.lblAdv2GeoIPTab.Name = "lblAdv2GeoIPTab";
+            this.lblAdv2GeoIPTab.Size = new System.Drawing.Size(41, 15);
+            this.lblAdv2GeoIPTab.TabIndex = 21;
+            this.lblAdv2GeoIPTab.Text = "GeoIP";
+            // 
+            // chkAdv2EnableUseGeoIPFile
+            // 
+            this.chkAdv2UseGeoIPFile.AutoSize = true;
+            this.chkAdv2UseGeoIPFile.Location = new System.Drawing.Point(30, 118);
+            this.chkAdv2UseGeoIPFile.Name = "chkAdv2EnableUseGeoIPFile";
+            this.chkAdv2UseGeoIPFile.Size = new System.Drawing.Size(124, 19);
+            this.chkAdv2UseGeoIPFile.TabIndex = 22;
+            this.chkAdv2UseGeoIPFile.Text = "Use GeoIp file only";
+            this.chkAdv2UseGeoIPFile.UseVisualStyleBackColor = true;
+            this.chkAdv2UseGeoIPFile.CheckedChanged += new System.EventHandler(this.chkAdv2UseGeoIPFile_CheckedChanged);
+            // 
             // frmOptions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1686,5 +1723,8 @@
         private System.Windows.Forms.Label lblPluginsDebug;
         private System.Windows.Forms.Panel panel19;
         private System.Windows.Forms.CheckBox chkAdv2IncludeTimeReason;
+        private System.Windows.Forms.Label lblAdv2GeoIPTab;
+        private System.Windows.Forms.Panel panel20;
+        private System.Windows.Forms.CheckBox chkAdv2UseGeoIPFile;
     }
 }
