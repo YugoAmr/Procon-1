@@ -1373,6 +1373,7 @@ frmOptions.lblAdv2BanTab=Sperrungen
 frmOptions.tabBasics.chkAdv2EnableAdminReason=Admin-Namen in der Begründung anzeigen
 frmOptions.tabBasics.chkAdv2IncludeTimeReason=Fügen Sie einen Zeitraum in tban Grund
 frmOptions.tabBasics.chkAdv2UseGeoIPFile=Verwenden GeoIp.dat Datei nur
+frmOptions.tabBasics.chkAdv2BlockRssFeed=Block rss feed news
 
 frmOptions.tabPlayerLookup=Stats-Links
 frmOptions.tabPlayerLookup.colStatsLinksName=Name

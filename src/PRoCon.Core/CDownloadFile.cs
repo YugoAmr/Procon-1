@@ -210,6 +210,7 @@ namespace PRoCon.Core
 
             try
             {
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
                 this.m_wrRequest = (HttpWebRequest)HttpWebRequest.Create(this.m_strDownloadSource);
                 this.m_wrRequest.Referer = "http://www.phogue.net/procon/";
                 this.m_wrRequest.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;

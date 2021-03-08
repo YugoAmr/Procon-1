@@ -103,7 +103,7 @@
             // lnkVisitForum
             // 
             this.lnkVisitForum.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(220)))));
-            this.lnkVisitForum.LinkArea = new System.Windows.Forms.LinkArea(0, 48);
+            this.lnkVisitForum.LinkArea = new System.Windows.Forms.LinkArea(0, 50);
             this.lnkVisitForum.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnkVisitForum.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(220)))));
             this.lnkVisitForum.Location = new System.Drawing.Point(9, 97);
@@ -112,6 +112,7 @@
             this.lnkVisitForum.TabIndex = 2;
             this.lnkVisitForum.TabStop = true;
             this.lnkVisitForum.Text = "Visit the forums for support and bug submissions";
+            this.lnkVisitForum.UseCompatibleTextRendering = true;
             this.lnkVisitForum.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
             // 
             // lblVersion
@@ -393,16 +394,14 @@
             this.linkLabel1.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(220)))));
             this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.LinkArea = new System.Windows.Forms.LinkArea(17, 20);
+            this.linkLabel1.LinkArea = new System.Windows.Forms.LinkArea(0, 0);
             this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.linkLabel1.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(220)))));
             this.linkLabel1.Location = new System.Drawing.Point(94, 254);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(148, 21);
+            this.linkLabel1.Size = new System.Drawing.Size(145, 15);
             this.linkLabel1.TabIndex = 2;
-            this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Copyright © 2015 Myrcon";
-            this.linkLabel1.UseCompatibleTextRendering = true;
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // frmAbout

@@ -1415,6 +1415,7 @@ frmOptions.lblAdv2BanTab=Bans
 frmOptions.tabBasics.chkAdv2EnableAdminReason=Enable Admin name in ban reason
 frmOptions.tabBasics.chkAdv2IncludeTimeReason=Include time period in tban reason
 frmOptions.tabBasics.chkAdv2UseGeoIPFile=Use GeoIp.dat file only
+frmOptions.tabBasics.chkAdv2BlockRssFeed=Block rss feed news
 
 frmOptions.tabPlayerLookup=Stats-Links
 frmOptions.tabPlayerLookup.colStatsLinksName=Name

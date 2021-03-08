@@ -88,6 +88,7 @@ namespace PRoCon.Forms
             this.m_praApplication.OptionsSettings.EnableAdminReasonChanged += new PRoCon.Core.Options.OptionsSettings.OptionsEnabledHandler(OptionsSettings_EnableAdminReasonChanged);
             this.m_praApplication.OptionsSettings.IncludeTimeReasonChanged += new PRoCon.Core.Options.OptionsSettings.OptionsEnabledHandler(OptionsSettings_IncludeTimeReasonChanged);
             this.m_praApplication.OptionsSettings.UseGeoIpFileOnlyChanged += new PRoCon.Core.Options.OptionsSettings.OptionsEnabledHandler(OptionsSettings_UseGeoIPFileChanged);
+            this.m_praApplication.OptionsSettings.BlockRssFeedNewsChanged += new PRoCon.Core.Options.OptionsSettings.OptionsEnabledHandler(OptionsSettings_BlockRssFeedChanged);
 
             this.m_praApplication.OptionsSettings.LayerHideLocalAccountsChanged += new OptionsSettings.OptionsEnabledHandler(OptionsSettings_LayerHideLocalAccountsChanged);
             this.m_praApplication.OptionsSettings.LayerHideLocalPluginsChanged += new OptionsSettings.OptionsEnabledHandler(OptionsSettings_LayerHideLocalPluginsChanged);
@@ -171,6 +172,7 @@ namespace PRoCon.Forms
                 this.m_praApplication.OptionsSettings.IncludeTimeReason = this.m_praApplication.OptionsSettings.IncludeTimeReason;
 
                 this.m_praApplication.OptionsSettings.UseGeoIpFileOnly = this.m_praApplication.OptionsSettings.UseGeoIpFileOnly;
+                this.m_praApplication.OptionsSettings.BlockRssFeedNews = this.m_praApplication.OptionsSettings.BlockRssFeedNews;
 
                 this.m_praApplication.OptionsSettings.LayerHideLocalAccounts = this.m_praApplication.OptionsSettings.LayerHideLocalAccounts;
                 this.m_praApplication.OptionsSettings.LayerHideLocalPlugins = this.m_praApplication.OptionsSettings.LayerHideLocalPlugins;
@@ -300,6 +302,7 @@ namespace PRoCon.Forms
             this.chkAdv2EnableAdminReason.Text = clocLanguage.GetDefaultLocalized("Enable Admin name in ban reason", "frmOptions.tabBasics.chkAdv2EnableAdminReason");
             this.chkAdv2IncludeTimeReason.Text = clocLanguage.GetDefaultLocalized("Include time period in tban reason", "frmOptions.tabBasics.chkAdv2IncludeTimeReason");
             this.chkAdv2UseGeoIPFile.Text = clocLanguage.GetDefaultLocalized("Use GeoIp file only", "frmOptions.tabBasics.chkAdv2UseGeoIPFile");
+            this.chkAdv2BlockRssFeed.Text = clocLanguage.GetDefaultLocalized("Block rss feed news", "frmOptions.tabBasics.chkAdv2BlockRssFeed");
 
             // StatsLinks
             this.tabPlayerLookup.Text = clocLanguage.GetLocalized("frmOptions.tabPlayerLookup");
@@ -926,6 +929,16 @@ namespace PRoCon.Forms
         private void chkAdv2UseGeoIPFile_CheckedChanged(object sender, EventArgs e)
         {
             this.m_praApplication.OptionsSettings.UseGeoIpFileOnly = this.chkAdv2UseGeoIPFile.Checked;
+        }
+
+        void OptionsSettings_BlockRssFeedChanged(bool blEnabled)
+        {
+            this.chkAdv2BlockRssFeed.Checked = blEnabled;
+        }
+
+        private void chkAdv2BlockRssFeed_CheckedChanged(object sender, EventArgs e)
+        {
+            this.m_praApplication.OptionsSettings.BlockRssFeedNews = this.chkAdv2BlockRssFeed.Checked;
         }
 
         void OptionsSettings_IncludeTimeReasonChanged(bool blEnabled)

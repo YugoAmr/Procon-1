@@ -540,8 +540,6 @@ namespace PRoCon.Core
         public void Execute()
         {
             // Load all of the accounts.
-            this.UpdateRss();
-
             this.ExecuteMainConfig("accounts.cfg");
             this.LoadingAccountsFile = false;
 
@@ -554,6 +552,8 @@ namespace PRoCon.Core
 
             this.ExecuteMainConfig("procon.cfg");
             this.LoadingMainConfig = false;
+
+            this.UpdateRss();
 
             this.Checker = new Timer(o => this.ReconnectVersionChecker(), null, 20000, 20000);
         }
@@ -2698,7 +2698,7 @@ namespace PRoCon.Core
 
         public void UpdateRss()
         {
-			if (this.OptionsSettings.BlockRssFeedNews == true)
+			if (this.OptionsSettings.BlockRssFeedNews == false)
 			{
 				// Begin RSS Update
 				if (this.BeginRssUpdate != null)
@@ -2711,10 +2711,10 @@ namespace PRoCon.Core
 				downloadRssFeed.DownloadError += new CDownloadFile.DownloadFileEventDelegate(downloadRssFeed_DownloadError);
 				downloadRssFeed.BeginDownload();
 
-				CDownloadFile downloadPromoFeed = new CDownloadFile("https://myrcon.com/procon/streams/banners/format/xml");
+				/*CDownloadFile downloadPromoFeed = new CDownloadFile("https://myrcon.com/procon/streams/banners/format/xml");
 				downloadPromoFeed.DownloadComplete += new CDownloadFile.DownloadFileEventDelegate(downloadPromoFeed_DownloadComplete);
 				downloadPromoFeed.DownloadError += new CDownloadFile.DownloadFileEventDelegate(downloadPromoFeed_DownloadError);
-				downloadPromoFeed.BeginDownload();
+				downloadPromoFeed.BeginDownload();*/
 			}
         }
 

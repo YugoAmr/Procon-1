@@ -24,7 +24,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.pnlAccountPrivileges = new System.Windows.Forms.Panel();
-            this.uscPrivileges = new uscPrivilegesSelection();
+            this.uscPrivileges = new PRoCon.Controls.uscPrivilegesSelection();
             this.pnlStartPRoConLayer = new System.Windows.Forms.Panel();
             this.btnInsertName = new System.Windows.Forms.Button();
             this.lblBindingExplanation = new System.Windows.Forms.Label();
@@ -57,6 +57,7 @@
             this.pnlAccountPrivileges.SuspendLayout();
             this.pnlStartPRoConLayer.SuspendLayout();
             this.pnlMainLayerServer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spltLayerSetupPrivs)).BeginInit();
             this.spltLayerSetupPrivs.Panel1.SuspendLayout();
             this.spltLayerSetupPrivs.Panel2.SuspendLayout();
             this.spltLayerSetupPrivs.SuspendLayout();
@@ -360,6 +361,7 @@
             this.colPrivileges});
             this.lsvLayerAccounts.FullRowSelect = true;
             this.lsvLayerAccounts.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.lsvLayerAccounts.HideSelection = false;
             this.lsvLayerAccounts.Location = new System.Drawing.Point(56, 33);
             this.lsvLayerAccounts.MultiSelect = false;
             this.lsvLayerAccounts.Name = "lsvLayerAccounts";
@@ -391,7 +393,7 @@
             this.lblLayerAssignAccountPrivilegesTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblLayerAssignAccountPrivilegesTitle.AutoSize = true;
             this.lblLayerAssignAccountPrivilegesTitle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLayerAssignAccountPrivilegesTitle.Location = new System.Drawing.Point(30, 6);
+            this.lblLayerAssignAccountPrivilegesTitle.Location = new System.Drawing.Point(38, 6);
             this.lblLayerAssignAccountPrivilegesTitle.Name = "lblLayerAssignAccountPrivilegesTitle";
             this.lblLayerAssignAccountPrivilegesTitle.Size = new System.Drawing.Size(233, 15);
             this.lblLayerAssignAccountPrivilegesTitle.TabIndex = 21;
@@ -425,6 +427,7 @@
             this.spltLayerSetupPrivs.Panel1.PerformLayout();
             this.spltLayerSetupPrivs.Panel2.ResumeLayout(false);
             this.spltLayerSetupPrivs.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spltLayerSetupPrivs)).EndInit();
             this.spltLayerSetupPrivs.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picLayerServerStatus)).EndInit();
             this.ResumeLayout(false);

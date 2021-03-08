@@ -136,12 +136,12 @@ namespace PRoCon.Forms
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://myrcon.net/");
+            //System.Diagnostics.Process.Start("https://myrcon.net/");
         }
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://myrcon.net/");
+            System.Diagnostics.Process.Start("https://my.xlgames.pro/threads/download-procon-frostbite-skachat-procon.1325/");
         }
 
         private void okButton_Click(object sender, EventArgs e)

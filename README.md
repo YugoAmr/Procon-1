@@ -15,16 +15,9 @@ If you are looking for a list of available plugins, head over to the [plugins se
 ### 1.5.3.4 to 1.5.3.5 ###
 #### Core ####
 - Added ability to disable the new API check for player country info
+- Added settings option for country lookup method and rss feed
 - Updated GEOIP database file
 - Removed usage sending stats
-- Added EZRCON ad banner
-
-If you are upgrading then you may need to add these two lines to your existing installation in the file `procon.cfg`. To enable these options just change `False` to `True`.
-
-```
-procon.private.options.UseGeoIpFileOnly False
-procon.private.options.BlockRssFeedNews False
-```
 
 ### 1.5.3.3 to 1.5.3.4 ###
 #### Core ####

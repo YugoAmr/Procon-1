@@ -1198,6 +1198,7 @@ frmOptions.lblAdv2BanTab=Баны
 frmOptions.tabBasics.chkAdv2EnableAdminReason=Отображать имя админестратора в причине кика/бана и т.д
 frmOptions.tabBasics.chkAdv2IncludeTimeReason=Добавлять продолжительность в причину временного бана.
 frmOptions.tabBasics.chkAdv2UseGeoIPFile=Использовать файл GeoIP.dat для определения страны
+frmOptions.tabBasics.chkAdv2BlockRssFeed=Отключить ленту новостей на стартовой странице
 
 frmOptions.tabPlayerLookup=Stats-Ссылки
 frmOptions.tabPlayerLookup.colStatsLinksName=Имя
@@ -2002,10 +2003,10 @@ uscPluginPanel.tabPluginSettings=Настройки плагина
 ///////////////////////////////////
 uscAccountsPanel.Title=PRoCon Сервер
 
-uscAccountsPanel.lblLayerServerSetupTitle=Установка сервера PRoCon
+uscAccountsPanel.lblLayerServerSetupTitle=Настройки сервера PRoCon
 uscAccountsPanel.lnkStartStopLayer.Start=Включить сервер PRoCon
 uscAccountsPanel.lnkStartStopLayer.Stop=Выключить сервер PRoCon
-uscAccountsPanel.lblLayerServerStatus.Online=Просмотр онлайн подключения к порту {0}
+uscAccountsPanel.lblLayerServerStatus.Online=Работает и принимает входящие соединения на порту {0}
 uscAccountsPanel.lblLayerServerStatus.Offline=Сервер выключен
 uscAccountsPanel.lblLayerServerStatus.Error=Ошибка: {0}
 
