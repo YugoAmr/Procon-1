@@ -2006,7 +2006,7 @@ uscAccountsPanel.Title=PRoCon Сервер
 uscAccountsPanel.lblLayerServerSetupTitle=Настройки сервера PRoCon
 uscAccountsPanel.lnkStartStopLayer.Start=Включить сервер PRoCon
 uscAccountsPanel.lnkStartStopLayer.Stop=Выключить сервер PRoCon
-uscAccountsPanel.lblLayerServerStatus.Online=Работает и принимает входящие соединения на порту {0}
+uscAccountsPanel.lblLayerServerStatus.Online=Работает и принимает входящие соединения на порт {0}
 uscAccountsPanel.lblLayerServerStatus.Offline=Сервер выключен
 uscAccountsPanel.lblLayerServerStatus.Error=Ошибка: {0}
 
