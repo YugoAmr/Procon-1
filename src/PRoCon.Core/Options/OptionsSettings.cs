@@ -735,7 +735,7 @@ namespace PRoCon.Core.Options
 
             this.TrustedHostsWebsitesPorts = new NotificationList<TrustedHostWebsitePort>();
 
-            this.StatsLinksMaxNum = 5;
+            this.StatsLinksMaxNum = 6;
             this.StatsLinkNameUrl = new NotificationList<StatsLinkNameUrl>();
             this.StatsLinkNameUrl.Add(new StatsLinkNameUrl("Battlelog", "https://battlelog.battlefield.com/%game%/user/%player_name%"));
             this.StatsLinkNameUrl.Add(new StatsLinkNameUrl("PunkBuster", "https://www.pbbans.com/mbi-guid-search-%player_PBguid%.html"));
