@@ -186,7 +186,7 @@ namespace PRoCon.Core.Remote
 
             ResponseDelegates.Add("admin.help", DispatchHelpResponse);
 
-            GetPacketsPattern = new Regex(GetPacketsPattern + @"|^reservedSlotsList.list|^player\.idleDuration|^player\.isAlive|^player.ping|squad\.listActive|^squad\.listPlayers|^squad\.private", RegexOptions.Compiled);
+            GetPacketsPattern = new Regex(GetPacketsPattern + @"|^spectatorList.list|^reservedSlotsList.list|^player\.idleDuration|^player\.isAlive|^player.ping|squad\.listActive|^squad\.listPlayers|^squad\.private", RegexOptions.Compiled);
         }
 
         public override string GameType
@@ -275,6 +275,12 @@ namespace PRoCon.Core.Remote
 
             SendGetVarsPresetPacket();
             SendGetVarsMpExperiencePacket();
+        }
+
+        public override void SendSpectatorListLoadPacket()
+        {
+            // Command not exist for bf4 client
+            return;
         }
 
         #region Overridden Events

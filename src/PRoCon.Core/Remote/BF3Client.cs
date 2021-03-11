@@ -203,6 +203,12 @@ namespace PRoCon.Core.Remote
             SendGetVarsPremiumStatusPacket();
         }
 
+        public override void SendSpectatorListLoadPacket()
+        {
+            // Command not exist for bf3 client
+            return;
+        }
+
         #region Overridden Events
 
         public override event ServerInfoHandler ServerInfo;
