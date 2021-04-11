@@ -2880,6 +2880,14 @@ namespace PRoCon.Core.Remote
             }
         }
 
+        public virtual void SendProconPluginReloadAllPacket()
+        {
+            if (IsLoggedIn == true)
+            {
+                SendRequest("procon.plugin.reloadAll");
+            }
+        }
+
         #region Map Zones
 
         public virtual void SendProconBattlemapModifyZonePointsPacket(string uid, Point3D[] zonePoints)

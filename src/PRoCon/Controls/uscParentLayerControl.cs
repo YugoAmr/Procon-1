@@ -343,6 +343,15 @@ namespace PRoCon.Controls
             }
         }
 
+        private void uscPlugins_ReloadPluginsRemote()
+        {
+
+            if (this.m_blUpdatingPlugins == false)
+            {
+                this.m_prcClient.SendProconPluginReloadAllPacket();
+            }
+        }
+
         private void m_prcClient_ReadRemotePluginConsole(PRoConClient sender, DateTime loggedTime, string text)
         {
             this.InvokeIfRequired(() => this.uscPlugins.Write(loggedTime, text));

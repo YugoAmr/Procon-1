@@ -173,6 +173,7 @@ namespace PRoCon.Core.Remote.Layer
                     { "procon.plugin.listEnabled", this.DispatchProconPluginListEnabledRequest  },
                     { "procon.plugin.enable", this.DispatchProconPluginEnableRequest  },
                     { "procon.plugin.setVariable", this.DispatchProconPluginSetVariableRequest  },
+                    { "procon.plugin.reloadAll", this.DispatchProconPluginReloadAll  },
 
                     { "procon.exec", this.DispatchProconExecRequest },
 
@@ -1111,6 +1112,27 @@ namespace PRoCon.Core.Remote.Layer
                     {
                         sender.SendResponse(packet, LayerClient.ResponseInvalidArguments);
                     }
+                }
+                else
+                {
+                    sender.SendResponse(packet, LayerClient.ResponseInsufficientPrivileges);
+                }
+            }
+            else
+            {
+                sender.SendResponse(packet, LayerClient.ResponseLoginRequired);
+            }
+        }
+
+        private void DispatchProconPluginReloadAll(ILayerPacketDispatcher sender, Packet packet)
+        {
+            if (this.IsLoggedIn == true)
+            {
+                if (this.Privileges.CanIssueLimitedProconPluginCommands == true)
+                {
+                    sender.SendResponse(packet, LayerClient.ResponseOk);
+
+                    this.Client.CompilePlugins(Application.OptionsSettings.PluginPermissions);
                 }
                 else
                 {

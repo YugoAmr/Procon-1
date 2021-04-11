@@ -48,6 +48,7 @@ namespace PRoCon.Controls
 
         public delegate void EventDelegate();
         public event EventDelegate ReloadPlugins;
+        public event EventDelegate ReloadPluginsRemote;
 
         public delegate void PluginEventDelegate(PluginDetails spdPlugin);
         public event PluginEventDelegate PluginLoaded;
@@ -141,8 +142,7 @@ table.nostyle td,table.nostyle th,table.nostyle tr.even td,table.nostyle tr:hove
             set
             {
                 //this.spltPlugins.Panel2Collapsed = value;
-                this.lnkReloadPlugins.Visible = !value;
-
+                //this.lnkReloadPlugins.Visible = value;
                 this.m_blLocalPlugins = value;
             }
             get
@@ -794,14 +794,19 @@ table.nostyle td,table.nostyle th,table.nostyle tr.even td,table.nostyle tr:hove
 
         private void lnkReloadPlugins_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
-            if (this.ReloadPlugins != null)
+            if (LocalPlugins)
             {
-                this.rtbScriptConsole.Text = String.Empty;
+                if (this.ReloadPlugins != null)
+                {
+                    this.rtbScriptConsole.Text = String.Empty;
 
-                this.ReloadPlugins();
+                    this.ReloadPlugins();
+                }
             }
-
+            else
+            {
+                ReloadPluginsRemote?.Invoke();
+            }
             //this.m_prcConnection.CompilePlugins();
         }
 

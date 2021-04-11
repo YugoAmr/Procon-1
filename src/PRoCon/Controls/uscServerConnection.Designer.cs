@@ -63,8 +63,8 @@
             this.btnNextRound = new System.Windows.Forms.Button();
             this.lblPlasmaStatus = new System.Windows.Forms.Label();
             this.lblLayerVersion = new System.Windows.Forms.Label();
-            this.lblServerUptime = new System.Windows.Forms.Label();
             this.lblMappack = new System.Windows.Forms.Label();
+            this.lblServerUptime = new System.Windows.Forms.Label();
             this.toolTipPlasma = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipMapControls = new System.Windows.Forms.ToolTip(this.components);
             this.tmrTimerTicks = new System.Windows.Forms.Timer(this.components);
@@ -182,7 +182,7 @@
             // 
             this.txtMessage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMessage.Location = new System.Drawing.Point(134, -32860);
+            this.txtMessage.Location = new System.Drawing.Point(134, -32768);
             this.txtMessage.MaxLength = 128;
             this.txtMessage.Name = "txtMessage";
             this.txtMessage.Size = new System.Drawing.Size(0, 23);
@@ -192,7 +192,7 @@
             // 
             this.lblMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblMessage.AutoSize = true;
-            this.lblMessage.Location = new System.Drawing.Point(131, -32860);
+            this.lblMessage.Location = new System.Drawing.Point(131, -32768);
             this.lblMessage.Name = "lblMessage";
             this.lblMessage.Size = new System.Drawing.Size(56, 15);
             this.lblMessage.TabIndex = 6;
@@ -202,7 +202,7 @@
             // 
             this.lblRecipientUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblRecipientUser.AutoSize = true;
-            this.lblRecipientUser.Location = new System.Drawing.Point(13, -32860);
+            this.lblRecipientUser.Location = new System.Drawing.Point(13, -32768);
             this.lblRecipientUser.Name = "lblRecipientUser";
             this.lblRecipientUser.Size = new System.Drawing.Size(59, 15);
             this.lblRecipientUser.TabIndex = 4;
@@ -215,7 +215,7 @@
             this.cboRecipient.FormattingEnabled = true;
             this.cboRecipient.Items.AddRange(new object[] {
             "All Players"});
-            this.cboRecipient.Location = new System.Drawing.Point(16, -32860);
+            this.cboRecipient.Location = new System.Drawing.Point(16, -32768);
             this.cboRecipient.Name = "cboRecipient";
             this.cboRecipient.Size = new System.Drawing.Size(112, 23);
             this.cboRecipient.TabIndex = 5;
@@ -319,7 +319,7 @@
             // 
             this.uscPlugins.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uscPlugins.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.uscPlugins.LocalPlugins = false;
+            this.uscPlugins.LocalPlugins = true;
             this.uscPlugins.Location = new System.Drawing.Point(9, 9);
             this.uscPlugins.Name = "uscPlugins";
             this.uscPlugins.Size = new System.Drawing.Size(1360, 917);
@@ -519,6 +519,15 @@
             this.lblLayerVersion.Text = "       ";
             this.lblLayerVersion.Visible = false;
             // 
+            // lblMappack
+            // 
+            this.lblMappack.AutoSize = true;
+            this.lblMappack.Location = new System.Drawing.Point(488, 0);
+            this.lblMappack.Name = "lblMappack";
+            this.lblMappack.Size = new System.Drawing.Size(68, 15);
+            this.lblMappack.TabIndex = 123;
+            this.lblMappack.Text = "Mappack: 1";
+            // 
             // lblServerUptime
             // 
             this.lblServerUptime.AutoSize = true;
@@ -528,15 +537,6 @@
             this.lblServerUptime.TabIndex = 122;
             this.lblServerUptime.Text = "      ";
             this.lblServerUptime.Visible = false;
-            // 
-            // lblMappack
-            // 
-            this.lblMappack.AutoSize = true;
-            this.lblMappack.Location = new System.Drawing.Point(488, 0);
-            this.lblMappack.Name = "lblMappack";
-            this.lblMappack.Size = new System.Drawing.Size(68, 15);
-            this.lblMappack.TabIndex = 123;
-            this.lblMappack.Text = "Mappack: 1";
             // 
             // toolTipPlasma
             // 

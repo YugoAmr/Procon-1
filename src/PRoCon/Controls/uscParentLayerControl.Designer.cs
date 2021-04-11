@@ -83,9 +83,9 @@
             // 
             // tbcLayerControl
             // 
-            this.tbcLayerControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbcLayerControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbcLayerControl.Controls.Add(this.tabPlugins);
             this.tbcLayerControl.Controls.Add(this.tabAccounts);
             this.tbcLayerControl.Location = new System.Drawing.Point(0, 3);
@@ -108,18 +108,19 @@
             // 
             // uscPlugins
             // 
-            this.uscPlugins.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.uscPlugins.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.uscPlugins.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.uscPlugins.LocalPlugins = true;
+            this.uscPlugins.LocalPlugins = false;
             this.uscPlugins.Location = new System.Drawing.Point(9, 9);
             this.uscPlugins.Name = "uscPlugins";
             this.uscPlugins.Size = new System.Drawing.Size(975, 1248);
             this.uscPlugins.TabIndex = 0;
-            this.uscPlugins.GetPluginDetails += new uscPluginPanel.GetPluginDetailsDelegate(this.uscPlugins_GetPluginDetails);
-            this.uscPlugins.SetPluginVariable += new uscPluginPanel.SetPluginVariableDelegate(this.uscPlugins_SetPluginVariable);
-            this.uscPlugins.PluginEnabled += new uscPluginPanel.PluginEnabledDelegate(this.uscPlugins_PluginEnabled);
+            this.uscPlugins.ReloadPluginsRemote += new PRoCon.Controls.uscPluginPanel.EventDelegate(this.uscPlugins_ReloadPluginsRemote);
+            this.uscPlugins.GetPluginDetails += new PRoCon.Controls.uscPluginPanel.GetPluginDetailsDelegate(this.uscPlugins_GetPluginDetails);
+            this.uscPlugins.SetPluginVariable += new PRoCon.Controls.uscPluginPanel.SetPluginVariableDelegate(this.uscPlugins_SetPluginVariable);
+            this.uscPlugins.PluginEnabled += new PRoCon.Controls.uscPluginPanel.PluginEnabledDelegate(this.uscPlugins_PluginEnabled);
             // 
             // tabAccounts
             // 
@@ -128,7 +129,7 @@
             this.tabAccounts.Location = new System.Drawing.Point(4, 24);
             this.tabAccounts.Name = "tabAccounts";
             this.tabAccounts.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAccounts.Size = new System.Drawing.Size(993, 1245);
+            this.tabAccounts.Size = new System.Drawing.Size(993, 1269);
             this.tabAccounts.TabIndex = 1;
             this.tabAccounts.Text = "Accounts";
             this.tabAccounts.UseVisualStyleBackColor = true;

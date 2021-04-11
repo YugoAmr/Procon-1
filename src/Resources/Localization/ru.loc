@@ -1195,7 +1195,7 @@ frmOptions.tabAdvanced.lblAdvSpecialSwitches.lblAdvShowDICESpecialOptionsNotice=
 
 frmOptions.tabAdvanced2=Дополнительно-2
 frmOptions.lblAdv2BanTab=Баны
-frmOptions.tabBasics.chkAdv2EnableAdminReason=Отображать имя админестратора в причине кика/бана и т.д
+frmOptions.tabBasics.chkAdv2EnableAdminReason=Отображать имя администратора в причине кика/бана и т.д
 frmOptions.tabBasics.chkAdv2IncludeTimeReason=Добавлять продолжительность в причину временного бана.
 frmOptions.tabBasics.chkAdv2UseGeoIPFile=Использовать файл GeoIP.dat для определения страны
 frmOptions.tabBasics.chkAdv2BlockRssFeed=Отключить ленту новостей на стартовой странице
