@@ -2162,6 +2162,7 @@ uscServerSettingsPanel.TeamFactions.RU=Verbrecher
 ///////////////////////////////////
 uscPluginPanel.lblLoadedPlugins=geladenen Plugins
 uscPluginPanel.lnkReloadPlugins=Reload Plugins
+uscPluginPanel.lnkReloadPluginsRemote=Reload plugins on the server
 uscPluginPanel.lnkMorePlugins=Mehr Plugins
 uscPluginPanel.tabPluginDetails=Details
 uscPluginPanel.tabPluginDetails.lblPluginName=Name

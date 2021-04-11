@@ -1987,6 +1987,7 @@ uscServerSettingsPanel.TeamFactions.RU=Бандиты
 ///////////////////////////////////
 uscPluginPanel.lblLoadedPlugins=Загруженные плагины
 uscPluginPanel.lnkReloadPlugins=Перезагрузить плагины
+uscPluginPanel.lnkReloadPluginsRemote=Перезагрузить плагины на сервере
 uscPluginPanel.lnkMorePlugins=Ещё плагины
 uscPluginPanel.tabPluginDetails=Подробности
 uscPluginPanel.tabPluginDetails.lblPluginName=Имя

@@ -220,7 +220,15 @@ table.nostyle td,table.nostyle th,table.nostyle tr.even td,table.nostyle tr:hove
             //this.tbpPlugins.Text = this.m_clocLanguage.GetLocalized("uscServerConnection.tbpPlugins.Title", null);
 
             this.lblLoadedPlugins.Text = this.m_clocLanguage.GetLocalized("uscPluginPanel.lblLoadedPlugins", null);
-            this.lnkReloadPlugins.Text = this.m_clocLanguage.GetLocalized("uscPluginPanel.lnkReloadPlugins", null);
+            if (LocalPlugins)
+            {
+                this.lnkReloadPlugins.Text = this.m_clocLanguage.GetLocalized("uscPluginPanel.lnkReloadPlugins", null);
+            }
+            else
+            {
+                this.lnkReloadPlugins.Text = this.m_clocLanguage.GetLocalized("uscPluginPanel.lnkReloadPluginsRemote", null);
+            }
+
             //this.lnkReloadPlugins.LinkArea = new LinkArea(0, this.lnkReloadPlugins.Text.Length);
             this.lnkMorePlugins.Text = this.m_clocLanguage.GetLocalized("uscPluginPanel.lnkMorePlugins", null);
 

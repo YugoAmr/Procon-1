@@ -2204,6 +2204,7 @@ uscServerSettingsPanel.TeamFactions.RU=Criminals
 ///////////////////////////////////
 uscPluginPanel.lblLoadedPlugins=Loaded plugins
 uscPluginPanel.lnkReloadPlugins=Reload plugins
+uscPluginPanel.lnkReloadPluginsRemote=Reload plugins on the server
 uscPluginPanel.lnkMorePlugins=More plugins
 uscPluginPanel.tabPluginDetails=Details
 uscPluginPanel.tabPluginDetails.lblPluginName=Name
