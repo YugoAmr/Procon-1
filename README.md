@@ -1,32 +1,26 @@
 # Procon 1 #
-Procon 1 is developed by [Myrcon](https://myrcon.net "Un-Official homepage of Myrcon").
+Procon 1 is developed by Myrcon.
 
 ## About Procon ##
-Procon is a free remote control (RCON) tool for gameservers, currently supporting Battlefield: Bad Company 2, Battlefield 3, Medal of Honor: Warfighter, Battlefield 4 and Battlefield Hardline. It is developed by [Myrcon](https://myrcon.net "Un-Official homepage of Myrcon") and also available as open source software on [GitHub](https://github.com/AdKats/Procon-1 "Procon 1 on GitHub").
+Procon is a free remote control (RCON) tool for gameservers, currently supporting Battlefield: Bad Company 2, Battlefield 3, Medal of Honor: Warfighter, Battlefield 4 and Battlefield Hardline. It is developed by Myrcon and also available as open source software on [GitHub](https://github.com/YugoAmr/Procon-1 "Procon 1 on GitHub").
 
 In addition to providing basic features to control your gameserver, users can extend Procon's functionality using plugins, which can control Procon's behavior and add additional possibilities for gameserver admins. Furthermore, Procon provides a layer system, which allows running plugins and managing admin accounts in a central location instead of distributing it to every admin connected to the gameserver.
 
 
 ## Support ##
-Are you experiencing troubles while using Procon, would like to suggest a new feature or discuss settings and plugins with fellow admins? Feel free to pay our [Myrcon Community](https://myrcon.net "Myrcon Community") a visit!
+Are you experiencing troubles while using Procon, would like to suggest a new feature or discuss settings and plugins with fellow admins? Feel free to pay our [XL-Games Community](https://my.xlgames.pro/forums/procon/ "XL-Games Community") a visit!
 
-If you are looking for a list of available plugins, head over to the [plugins section](https://myrcon.net/index.php?/forum/9-plugins/ "Procon 1 plugins") of our forums.
+If you are looking for a list of available plugins, head over to the [plugins section](https://my.xlgames.pro/forums/proconplugins/ "Procon 1 plugins") of our forums.
 
 ### 1.5.3.4 to 1.5.3.5 ###
 #### Core ####
-- Added ability to disable the new API check for player country info
-- Added settings option for country lookup method and rss feed
+- Added ability to loading additional assemblies for plugins (details in \Plugins\Assembly\readme.txt)
+- Added new check API for player country info using [AdKats](https://myrcon.net/ "Un-Official homepage of Myrcon")
+- Updates and fixes for events capture
+- Updates and changes to ru.loc / au.loc / de.loc
+- Fixed refreshing spectators list
 - Updated GEOIP database file
 - Removed usage sending stats
-
-### 1.5.3.3 to 1.5.3.4 ###
-#### Core ####
-- Fixed GUI error with displaying country name
-
-### 1.5.3.2 to 1.5.3.3 ###
-#### Core ####
-- Updated geodata code
-- Updated the change log link in the procon menu.
 
 ### 1.5.2.1 to 1.5.3.2 ###
 #### Core ####
